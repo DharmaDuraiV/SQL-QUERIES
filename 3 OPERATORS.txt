@@ -1,0 +1,57 @@
+
+
+OPERATORS IN SQL 
+-------------------------------------
+1. ARITHEMATIC OPERATORS :- ( + , - , * , / )
+2. CONCATINATION OPERATOR :- ( || )
+3. COMPARISION OPERATORS :- ( = , !=  or <> )
+4. RELATIONAL OPERATOR :- ( > , < , >= , <= )
+5. LOGICAL OPERATORS :- ( AND , OR , NOT )
+6. SPECIAL OPERATOR :- ( 1.IN  
+                       	             2.NOT IN 
+                                                3.BETWEEN 
+                                                4.NOT BETWEEN 
+                                                5.IS 
+                                                6.IS NOT 
+                                                7.LIKE  
+                                                8.NOT LIKE )
+7.SUBQUERY OPERATORS:-( 1.ALL
+                                                    2.ANY 
+                                                    3.EXISTS
+                                                    4.NOT EXISTS )
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

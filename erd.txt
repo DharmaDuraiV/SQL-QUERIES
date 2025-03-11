@@ -1,0 +1,49 @@
+An Entity–relationship model (ER model) describes the 
+   structure of a database with the help of a diagram,
+   which is known as Entity Relationship Diagram (ER Diagram).
+
+ ER diagram has three main components:
+1. Entity
+2. Attribute
+3. Relationship
+
+Rectangle –  It represents entity in the ER Model.
+Ellipse      –  It represents attribute in the ER Model.
+Diamond  –  It represents relationship between entity and attribute.
+Line         –  It links attribute(s) to entity set(s) and entity 
+                    set(s) to relationship set(s).
+Doubles Ellipses – It represents multivalued attributes.
+Dashed Ellipses –  It denotes derived attributes.
+Double lines –      It indicates total participation of an entity in 
+                             a relationship set.
+Double Rectangle – It represents weak entity set.
+Double Diamonds – It represents weak relationships.
+Multiple ellipses connected to single ellipse using lines –
+                               It represents composite attribute
+Ellipse with line inside it – It represents single values attributes
+
+
+
+
+
+Advantages of RDBMS
+-----------------------------------------------------------------------------------
+?It is easy to use.
+?It is secured in nature.
+?The data manipulation can be done.
+?It limits redundancy and replication of the data.
+?It offers better data integrity.
+?It provides better physical data independence.
+?It offers logical database independence i.e. data can be viewed in
+   different ways by the different users.
+?Multiple users can access the database which is not possible in DBMS.
+Drawbacks or disadvantages of RDBMS
+
+Following are the disadvantages of RDBMS:
+-----------------------------------------------------------------------------
+?Software is expensive.
+?Complex software refers to expensive hardware and hence increases 
+   overall cost to avail the RDBMS service.
+?It requires skilled human resources to implement.
+?Complex Queries have to be written ( usage of subquery and join ).
+?It is difficult to recover the lost data.

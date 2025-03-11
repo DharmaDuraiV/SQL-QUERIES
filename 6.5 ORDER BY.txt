@@ -1,0 +1,17 @@
+ORDER BY SYNTAX:
+------------------------------
+ SELECT  group_by_expression / group_function
+ FROM table_name 
+[WHERE <filter_condition>]
+[GROUP BY column_name/expression]
+[HAVING  <group_filter_condition>]
+ ORDER BY Col_name/expression [ASC]/DESC ;
+ 
+ORDER OF EXECUTION:
+--------------------------------------
+1-FROM 
+2-WHERE(if used)        [ROW-BY-ROW]
+3-GROUP BY (if used)    [ROW-BY-ROW]
+4-HAVING (if used)      [GROUP-BY-GROUP]
+5-SELECT                [GROUP-BY-GROUP]
+6-ORDER BY               [ROW-BY-ROW]
