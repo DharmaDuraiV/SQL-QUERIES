@@ -164,9 +164,14 @@ FORMAT_MODELS: ( ex:  02-dec-19 )
 -----------------------------------
 1. NVL(): ( NULL VALUE LOGIC ) 
 
+The NVL() function is used to replace NULL values with a specified value.
+If the first argument is NULL, it returns the second argument.
+
 	SYNTAX: NVL ( ARG1 , ARG2 )
 
 2. NVL2() :
+
+The NVL2() function checks if the first argument is NULL. If it is not NULL, it returns the second argument; otherwise, it returns the third argument.
 
 	SYNTAX: NVL2 ( ARG1 , ARG2 , ARG3 ) 
 
@@ -184,6 +189,9 @@ FORMAT_MODELS: ( ex:  02-dec-19 )
 
 4. RANK() :
 
+Rank function is used to Assigns a rank to each row.
+Rank function creates gap/skips the ranks  if the same rank is avaliable
+
 	SYNTAX:  RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
                                ORDER BY COL_NAME [ASC]/DESC)
 
@@ -191,6 +199,11 @@ FORMAT_MODELS: ( ex:  02-dec-19 )
 
 
 5. DENSE_RANK() :
+
+Dense_Rank function is used to Assigns a rank to each row.
+
+Dense_Rank function it will not creates gaps/skips if the same rank is available
+
 
 SYNTAX: DENSE_RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
                                ORDER BY COL_NAME [ASC]/DESC)
