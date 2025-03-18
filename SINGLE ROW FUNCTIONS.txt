@@ -190,7 +190,7 @@ The NVL2() function checks if the first argument is NULL. If it is not NULL, it 
 4. RANK() :
 
 Rank function is used to Assigns a rank to each row.
-Rank function creates gap/skips the ranks  if the same rank is avaliable
+If the same rank is avaliableRank function it will creates gap or skips the ranks 
 
 	SYNTAX:  RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
                                ORDER BY COL_NAME [ASC]/DESC)
@@ -201,8 +201,7 @@ Rank function creates gap/skips the ranks  if the same rank is avaliable
 5. DENSE_RANK() :
 
 Dense_Rank function is used to Assigns a rank to each row.
-
-Dense_Rank function it will not creates gaps/skips if the same rank is available
+If the same rank is available Dense_Rank function it will not creates gaps or skips the ranks
 
 
 SYNTAX: DENSE_RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
