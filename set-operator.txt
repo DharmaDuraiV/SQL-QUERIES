@@ -1,0 +1,116 @@
+Table t1:
+deptno
+10
+20
+30
+40
+Table t2:
+deptno
+20
+30
+50
+60
+-----------------------------------------------------------------------------
+
+
+1. UNION
+
+Combines the results of two or more SELECT statements and removes duplicate rows. 
+It returns only distinct rows across all queries
+
+SELECT column_name FROM table1
+UNION
+SELECT column_name FROM table2;
+
+ex: 
+
+ SELECT deptno FROM t1
+UNION
+SELECT deptno FROM t2;
+
+o/p:
+
+deptno
+10
+20
+30
+40
+50
+60
+
+
+2. UNION ALL
+
+ Combines the results of two or more SELECT statements but includes all rows, even if they are duplicates.
+
+SELECT column_name FROM table1
+UNION ALL
+SELECT column_name FROM table2;
+
+ex:
+ 
+SELECT deptno FROM t1
+UNION ALL
+SELECT deptno FROM t2;
+
+
+o/p:
+
+Result (Including duplicates):
+
+deptno
+10
+20
+30
+40
+20
+30
+50
+60
+
+
+
+3. INTERSECT
+
+
+Returns only the rows that are common to both SELECT statements (i.e., the intersection of two result sets).
+
+SELECT column_name FROM table1
+INTERSECT
+SELECT column_name FROM table2;
+
+ex:
+
+SELECT deptno FROM t1
+INTERSECT
+SELECT deptno FROM t2;
+
+o/p:
+
+deptno
+20
+30
+
+
+
+
+4.MINUS
+ Returns the rows from the first SELECT statement that are not present in the second SELECT statement.
+
+SELECT column_name FROM table1
+MINUS
+SELECT column_name FROM table2;
+
+ex:
+
+SELECT deptno FROM t1
+MINUS
+SELECT deptno FROM t2;
+
+o/p:
+
+deptno
+10
+40
+
+
