@@ -1,4 +1,4 @@
-
+DROP TABLE emp PURGE;
 DROP TABLE dept PURGE;
 
 
@@ -20,7 +20,7 @@ values(40, 'OPERATIONS', 'BOSTON');
 
 
 
-DROP TABLE emp PURGE;
+
 
 CREATE TABLE emp (
   empno    NUMBER(4) CONSTRAINT pk_emp PRIMARY KEY,
