@@ -1,0 +1,195 @@
+TYPES OF JOINS :
+    1. CARTESIAN JOIN / CROSS JOIN 
+    2.INNER  JOIN / EQUI JOIN 
+    3.OUTER  JOIN 
+        i)   LEFT OUTER JOIN 
+        ii)  RIGTH OUTER JOIN 
+        iii) FULL OUTER JOIN 
+    4. SELF JOIN 
+    5.NATURAL JOIN
+
+************************************************************************
+
+
+1. CARTESIAN JOIN / CROSS JOIN :
+********************************
+SYNTAX: 
+--------
+
+1. ANSI :  
+          SELECT Column_Name 
+          FROM  Table_Name1  CROSS JOIN   Table_Name2 ;
+
+2.ORACLE :  
+          SELECT Column_Name 
+          FROM Table_Name1  ,  Table_Name2 ; 
+
+
+2.INNER  JOIN / EQUI JOIN :
+**************************
+SYNTAX: 
+---------
+
+1. ANSI :   
+          SELECT Column_Name 
+          FROM  Table_Name1  INNER JOIN   Table_Name2
+          ON  <JOIN_CONDITION>  ;
+
+2.ORACLE :  
+          SELECT Column_Name 
+          FROM Table_Name1  ,  Table_Name2
+          WHERE  <JOIN_CONDITION> ; 
+
+
+
+3.OUTER  JOIN :
+**************
+
+LEFT OUTER JOIN :
+********************
+1. ANSI :  
+          SELECT Column_Name 
+          FROM  Table_Name1  LEFT [OUTER] JOIN   Table_Name2
+          ON  <JOIN_CONDITION>  ;
+
+2.ORACLE : 
+          SELECT Column_Name 
+          FROM Table_Name1  ,  Table_Name2
+          WHERE Table_Name1.Col_Name  =  Table_Name2.Col_Name (+) ; 
+
+RIGHT OUTER JOIN :
+******************
+1. ANSI :  
+          SELECT Column_Name 
+          FROM  Table_Name1  RIGHT [OUTER] JOIN   Table_Name2
+          ON  <JOIN_CONDITION>  ;
+
+2.ORACLE : 
+          SELECT Column_Name 
+          FROM Table_Name1  ,  Table_Name2
+          WHERE Table_Name1.Col_Name(+)  =  Table_Name2.Col_Name  ; 
+
+FULL OUTER JOIN :
+******************
+1. ANSI :     
+          SELECT Column_Name 
+          FROM  Table_Name1  FULL [OUTER] JOIN   Table_Name2
+          ON  <JOIN_CONDITION>  ;
+
+4. SELF JOIN :
+**************
+
+SYNTAX: 
+---------
+
+ANSI :    
+      SELECT Column_Name 
+      FROM Table_Name T1   JOIN   Table_Name T2 
+      ON  < Join_Condition> ;
+
+ORACLE :   
+        SELECT Column_Name 
+        FROM Table_Name T1   ,   Table_Name T2 
+        WHERE < Join_Condition> ;
+
+
+
+
+5.NATURAL JOIN:
+***************
+syntax:
+--------
+
+ANSI :    
+        SELECT column_Name
+        FROM  Table_Name1 NATURAL JOIN Table_Name2 ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
