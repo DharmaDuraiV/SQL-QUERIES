@@ -12,17 +12,6 @@ order of execution:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 QUESTIONS :
 --------------------
 1.WAQTD THE ANNUAL SALARY OF THE EMPLOYEE WHOS NAME IS    SMITH
