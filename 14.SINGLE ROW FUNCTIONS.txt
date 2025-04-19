@@ -6,10 +6,7 @@ SINGLE ROW FUNCTIONS:
 -IF WE PASS n NUMBER OF INPUTS TO A SINGLE ROW FUNCTION IT RETURNS
  n NUMBER OF OUTPUTS .
 
-CLASSIFICATION OF SRF:
------------------------
-1. CHARACTER SRF 
------------------
+
 1. LENGTH() : 
             	 SYNTAX: LENGTH('string') 
 
@@ -60,9 +57,43 @@ CLASSIFICATION OF SRF:
 
 8. INSTR():
 
-SYNTAX:
+SYNTAX:  
+  INSTR( 'Original_str' , 'sub_str' , position  [,nth_occurrance])
 
-INSTR('Original_string' ,'Substr', position [,nth Occurrence] ) 
+1. WAQTD NAMES OF THE EMPLOYEE IF THE NAME CHAR 'A' PRESENT IN IT 
+WITHOUT USING LIKE OPERATOR
+ANS:  SELECT ENAME 
+      FROM EMP 
+      WHERE INSTR(ENAME , 'A' , 1, 1) > 0 ;
+
+2. WAQTD DETAILS OF THE EMPLOYEE IF THE NAME HAS CHAR 'L' PRESENT
+ ATLEAST 2 TIMES, WITHOUT USING LIKE OPERATOR.
+ANS:  SELECT * 
+      FROM EMP 
+      WHERE INSTR(ENAME , 'L' , 1, 2) > 0 ;
+
+3. WAQTD LIST OF EMPLOYEES WHO ARE WORKING IN A DESIGNATION THAT 
+ HAS A STRING 'MAN' IN IT .
+ANS:  SELECT * 
+      FROM EMP 
+      WHERE INSTR(JOB , 'MAN' , 1, 1) > 0 ;
+
+4. WAQTD NAMES OF THE EMPLOYEES IF THEIR NAME HAS CHAR 'S' PRESENT
+ EXACTLY ONCE.
+ANS:  SELECT * 
+      FROM EMP 
+      WHERE INSTR(ENAME , 'S' , 1, 1) > 0 
+            AND INSTR(ENAME ,'S',1,2)=0;
+
+5. WAQTD NAMES OF THE EMPLOYEES IF THEIR NAME HAS CHAR 'R' PRESENT
+ EXACTLY TWICE.
+ANS:  SELECT * 
+      FROM EMP 
+      WHERE INSTR(ENAME , 'R' , 1, 2) > 0 
+            AND INSTR(ENAME ,'R',1,3)=0;
+
+Assignments :
+*************
 
 	1.WAQTD NAMES OF THE EMPLOYEES IF CHAR 'S' IS PRESENT
           IN THE NAME. 
@@ -96,56 +127,41 @@ SYNTAX: REPLACE('Original_str' , 'Substr' [,'newstr'])
 	5.WAQTD NUMBER OF TIMES CHAR 'S' PRESENT IN SUCCESS.
 	6.WAQTD NUMBER OF TIMES CHAR 'E' PRESENT IN ENGINEERING.
 
-10.TRIM():
-
-SYNTAX: 
-
-     TRIM( LEADING/TRAILING/BOTH 'CHAR' FROM 'string')
-
-      MAIL_ID :   ROHANSINGHROO@GMAIL.COM   
 
 
+10. MOD()
+ 	SYNTAX:  MOD(M,N) ;
 
 
-2. MATH / NUMERIC / NUMBER SRF 
--------------------------------
-1. MOD()
-2. ABS()
-3. POWER()
-4. SQRT()
-5. ROUND()
-6. TRUNC()
+11. ROUND()
 
-3. DATE SRF 
+	SYNTAX:  ROUND(NUMBER[,SCALE])
+
+12. TRUNC()
+
+	SYNTAX: TRUNC(NUMBER[,SCALE])
+
+ DATE SRF 
 -------------------------------
 NOTE :  i.SYSDATE  or CURRENT_DATE 
        ii. SYSTIMESTAMP
-1.ADD_MONTHS():
 
-	syntax:ADD_MONTHS( DATE , no_of_months )
-		1.WAQTD DETAILS OF THE EMPLOYEE HIRED AFTER 
-                  TWO YEARS OF THE FIRST EMPLOYEE .
-		2.WAQTD DETAILS OF THE EMPLOYEE HIRED BEFORE 
-                  THREE YEARS OF THE LAST EMPLOYEE .
-2.MONTHS_BETWEEN() :
+13.MONTHS_BETWEEN() :
 
  	SYNTAX: MONTHS_BETWEEN( DATE1 , DATE2) 
 
-3.LAST_DAY() :
+14.LAST_DAY() :
 
 	SYNTAX: LAST_DAY( DATE ) 
 
-4.EXTRACT() :
 
-	SYNTAX: EXTRACT( DAY / MONTH / YEAR  from  DATE )
-
-4. CONVERSION SRF 
+CONVERSION SRF 
 ----------------------------------
-1.TO_DATE()
+16.TO_DATE()
 
 	SYNTAX: TO_DATE('date_str')
 
-2.TO_CHAR()
+16.TO_CHAR()
 
 	SYNTAX: TO_CHAR( DATE  , 'format_models' )
 
@@ -160,22 +176,35 @@ FORMAT_MODELS: ( ex:  02-dec-19 )
 	2. WAQTD THE DATE USING CHINA FORMAT . ( YYYY/MM/DD )
 	3. DISPLAY THE TIME .
 
-5. GENERAL SRF 
------------------------------------
-1. NVL(): ( NULL VALUE LOGIC ) 
+
+17. NVL(): ( NULL VALUE LOGIC ) 
 
 The NVL() function is used to replace NULL values with a specified value.
 If the first argument is NULL, it returns the second argument.
 
 	SYNTAX: NVL ( ARG1 , ARG2 )
 
-2. NVL2() :
+18. NVL2() :
 
-The NVL2() function checks if the first argument is NULL. If it is not NULL, it returns the second argument; otherwise, it returns the third argument.
+The NVL2() function checks if the first argument is NULL. 
+If it is not NULL, it returns the second argument; otherwise, it returns the third argument.
 
 	SYNTAX: NVL2 ( ARG1 , ARG2 , ARG3 ) 
 
-3. CASE() :
+19.COALESCE() :
+
+ 	SYNTAX :  COALESCE ( ARG1 , ARG2 , ARG3...... ) 
+
+20.NULLIF()
+
+SYNTAX: NULLIF ( ARG1 , ARG2 )
+
+21.IFNULL() --------------------> MYSQL 
+
+SYNTAX:      IFNULL ( ARG1 , ARG2 )
+
+
+22. CASE() :
 
 	SYNTAX: CASE WHEN condition_1 THEN 'result_1'
 		     WHEN condition_2 THEN 'result_2'
@@ -186,8 +215,7 @@ The NVL2() function checks if the first argument is NULL. If it is not NULL, it 
 		     [ELSE 'default_result'] 
 		     END
 
-
-4. RANK() :
+23. RANK() :
 
 Rank function is used to Assigns a rank to each row.
 If the same rank is avaliableRank function it will creates gap or skips the ranks 
@@ -196,9 +224,7 @@ If the same rank is avaliableRank function it will creates gap or skips the rank
                                ORDER BY COL_NAME [ASC]/DESC)
 
 
-
-
-5. DENSE_RANK() :
+24. DENSE_RANK() :
 
 Dense_Rank function is used to Assigns a rank to each row.
 If the same rank is available Dense_Rank function it will not creates gaps or skips the ranks
@@ -208,12 +234,33 @@ SYNTAX: DENSE_RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
                                ORDER BY COL_NAME [ASC]/DESC)
 
 
+*******************************************************************************************************************
 
 
 
+25.TRIM():
 
+SYNTAX: 
 
+     TRIM( LEADING/TRAILING/BOTH 'CHAR' FROM 'string')
 
+      MAIL_ID :   ROHANSINGHROO@GMAIL.COM   
+
+26. ABS()
+27. POWER()
+28. SQRT()
+
+29.EXTRACT() :
+
+	SYNTAX: EXTRACT( DAY / MONTH / YEAR  from  DATE )
+
+30.ADD_MONTHS():
+
+	syntax:ADD_MONTHS( DATE , no_of_months )
+		1.WAQTD DETAILS OF THE EMPLOYEE HIRED AFTER 
+                  TWO YEARS OF THE FIRST EMPLOYEE .
+		2.WAQTD DETAILS OF THE EMPLOYEE HIRED BEFORE 
+                  THREE YEARS OF THE LAST EMPLOYEE .
 
 
 
