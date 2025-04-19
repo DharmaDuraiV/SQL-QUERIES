@@ -1,4 +1,4 @@
-An Entity–relationship model (ER model) describes the 
+An Entityâ€“relationship model (ER model) describes the 
    structure of a database with the help of a diagram,
    which is known as Entity Relationship Diagram (ER Diagram).
 
@@ -7,20 +7,20 @@ An Entity–relationship model (ER model) describes the
 2. Attribute
 3. Relationship
 
-Rectangle –  It represents entity in the ER Model.
-Ellipse      –  It represents attribute in the ER Model.
-Diamond  –  It represents relationship between entity and attribute.
-Line         –  It links attribute(s) to entity set(s) and entity 
+Rectangle â€“  It represents entity in the ER Model.
+Ellipse      â€“  It represents attribute in the ER Model.
+Diamond  â€“  It represents relationship between entity and attribute.
+Line         â€“  It links attribute(s) to entity set(s) and entity 
                     set(s) to relationship set(s).
-Doubles Ellipses – It represents multivalued attributes.
-Dashed Ellipses –  It denotes derived attributes.
-Double lines –      It indicates total participation of an entity in 
+Doubles Ellipses â€“ It represents multivalued attributes.
+Dashed Ellipses â€“  It denotes derived attributes.
+Double lines â€“      It indicates total participation of an entity in 
                              a relationship set.
-Double Rectangle – It represents weak entity set.
-Double Diamonds – It represents weak relationships.
-Multiple ellipses connected to single ellipse using lines –
+Double Rectangle â€“ It represents weak entity set.
+Double Diamonds â€“ It represents weak relationships.
+Multiple ellipses connected to single ellipse using lines â€“
                                It represents composite attribute
-Ellipse with line inside it – It represents single values attributes
+Ellipse with line inside it â€“ It represents single values attributes
 
 
 
