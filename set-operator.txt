@@ -1,79 +1,61 @@
-drop table t1 purge;
-drop table t2 purge;
-drop table t3 purge;
+-- Drop tables if they exist (optional)
+DROP TABLE t1;
+DROP TABLE t2;
 
-create table t1 (
-  id           number(2) constraint t1_pk primary key,
-  record_type  number(2),
-  description  varchar2(12)
+-- Create table t1
+
+CREATE TABLE t1 (
+    deptno NUMBER
 );
 
-insert into t1 values (1, 10,'TEN');
-insert into t1 values (2, 10,'TEN');
-insert into t1 values (3, 20,'TWENTY');
-insert into t1 values (4, 20,'TWENTY');
-insert into t1 values (5, 30,'THIRTY');
-insert into t1 values (6, 30,'THIRTY');
-commit;
+-- Insert data into t1
 
-create table t2 (
-  id           number(2) constraint t2_pk primary key,
-  record_type  number(2),
-  description  varchar2(12)
+INSERT INTO t1 VALUES (10);
+INSERT INTO t1 VALUES (20);
+INSERT INTO t1 VALUES (30);
+INSERT INTO t1 VALUES (40);
+
+-- Create table t2
+
+CREATE TABLE t2 (
+    deptno NUMBER
 );
 
-insert into t2 values (1, 20,'TWENTY');
-insert into t2 values (2, 30,'THIRTY');
-commit;
+-- Insert data into t2
 
-create table t3 (
-  id           number(2) constraint t3_pk primary key,
-  record_type  number(2),
-  description  varchar2(12)
-);
+INSERT INTO t2 VALUES (20);
+INSERT INTO t2 VALUES (30);
+INSERT INTO t2 VALUES (50);
+INSERT INTO t2 VALUES (60);
 
-insert into t3 values (1, 20,'TWENTY');
-insert into t3 values (2, 20,'TWENTY');
-insert into t3 values (3, 30,'THIRTY');
-insert into t3 values (4, 30,'THIRTY');
-commit;
+
+COMMIT;
+
 
 *******************************************************************
 
 Table: t1
 
-+----+-------------+-------------+
-| ID | RECORD_TYPE | DESCRIPTION |
-+----+-------------+-------------+
-|  1 |          10 | TEN         |
-|  2 |          10 | TEN         |
-|  3 |          20 | TWENTY      |
-|  4 |          20 | TWENTY      |
-|  5 |          30 | THIRTY      |
-|  6 |          30 | THIRTY      |
-+----+-------------+-------------+
++--------+
+| deptno |
++--------+
+|   10   |
+|   20   |
+|   30   |
+|   40   |
++--------+
 
 
 Table: t2
 
-+----+-------------+-------------+
-| ID | RECORD_TYPE | DESCRIPTION |
-+----+-------------+-------------+
-|  1 |          20 | TWENTY      |
-|  2 |          30 | THIRTY      |
-+----+-------------+-------------+
-
-
-Table: t3
-
-+----+-------------+-------------+
-| ID | RECORD_TYPE | DESCRIPTION |
-+----+-------------+-------------+
-|  1 |          20 | TWENTY      |
-|  2 |          20 | TWENTY      |
-|  3 |          30 | THIRTY      |
-|  4 |          30 | THIRTY      |
-+----+-------------+-------------+
++--------+
+| deptno |
++--------+
+|   20   |
+|   30   |
+|   50   |
+|   60   |
++--------+
 
 
 ******************************************************************************************************************
@@ -90,24 +72,28 @@ SELECT column_name FROM table2;
 
 ex: 
 
- SELECT deptno FROM t1
+SELECT deptno FROM t1
 UNION
 SELECT deptno FROM t2;
 
 o/p:
++--------+
+| deptno |
++--------+
+|   10   |
+|   20   |
+|   30   |
+|   40   |
+|   50   |
+|   60   |
++--------+
 
-deptno
-10
-20
-30
-40
-50
-60
 
-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 2. UNION ALL
 
- Combines the results of two or more SELECT statements but includes all rows, even if they are duplicates.
+Combines the results of two or more SELECT statements 
+but includes all rows, even if they are duplicates.
 
 SELECT column_name FROM table1
 UNION ALL
@@ -124,16 +110,20 @@ o/p:
 
 Result (Including duplicates):
 
-deptno
-10
-20
-30
-40
-20
-30
-50
-60
-----------------------------------------------------------------------------------------------------------------------
++--------+
+| deptno |
++--------+
+|   10   |
+|   20   |
+|   30   |
+|   40   |
+|   20   |
+|   30   |
+|   50   |
+|   60   |
++--------+
+
+------------------------------------------------------------------------------------------------------------------
 
 3. INTERSECT
 
@@ -151,16 +141,18 @@ INTERSECT
 SELECT deptno FROM t2;
 
 o/p:
++--------+
+| deptno |
++--------+
+|   20   |
+|   30   |
++--------+
 
-deptno
-20
-30
-
-----------------------------------------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------------------------
 
 4.MINUS
- Returns the rows from the first SELECT statement that are not present in the second SELECT statement.
+ Returns the rows from the first SELECT statement 
+ that are not present in the second SELECT statement.
 
 SELECT column_name FROM table1
 MINUS
@@ -174,8 +166,11 @@ SELECT deptno FROM t2;
 
 o/p:
 
-deptno
-10
-40
++--------+
+| deptno |
++--------+
+|   10   |
+|   40   |
++--------+
 
 
