@@ -7,9 +7,9 @@ An Entity–relationship model (ER model) describes the
 2. Attribute
 3. Relationship
 
-Rectangle –  It represents entity in the ER Model.
+Rectangle    –  It represents entity in the ER Model.
 Ellipse      –  It represents attribute in the ER Model.
-Diamond  –  It represents relationship between entity and attribute.
+Diamond      –  It represents relationship between entity and attribute.
 Line         –  It links attribute(s) to entity set(s) and entity 
                     set(s) to relationship set(s).
 Doubles Ellipses – It represents multivalued attributes.
@@ -18,8 +18,7 @@ Double lines –      It indicates total participation of an entity in
                              a relationship set.
 Double Rectangle – It represents weak entity set.
 Double Diamonds – It represents weak relationships.
-Multiple ellipses connected to single ellipse using lines –
-                               It represents composite attribute
+Multiple ellipses connected to single ellipse using lines – It represents composite attribute
 Ellipse with line inside it – It represents single values attributes
 
 
