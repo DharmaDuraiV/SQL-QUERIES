@@ -30,8 +30,11 @@ CREATE TABLE emp (
   hiredate DATE,
   sal      NUMBER(7,2),
   comm     NUMBER(7,2),
-  deptno   NUMBER(2)
+  deptno   NUMBER(2),
+  CONSTRAINT fk_emp_dept FOREIGN KEY (deptno) REFERENCES dept(deptno)
 );
+
+
 
 INSERT INTO emp VALUES (7369,'SMITH','CLERK',7902,to_date('17-12-1980','dd-mm-yyyy'),800,NULL,20);
 INSERT INTO emp VALUES (7499,'ALLEN','SALESMAN',7698,to_date('20-2-1981','dd-mm-yyyy'),1600,300,30);
