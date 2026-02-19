@@ -1,0 +1,13 @@
+| Oracle Function | MySQL Alternate        |
+| --------------- | ---------------------- |
+| INITCAP         | CONCAT + UPPER + LOWER |
+| NVL             | IFNULL / COALESCE      |
+| NVL2            | CASE                   |
+| ADD_MONTHS      | DATE_ADD               |
+| MONTHS_BETWEEN  | TIMESTAMPDIFF          |
+| TRUNC           | TRUNCATE               |
+| TO_CHAR         | DATE_FORMAT            |
+| TO_DATE         | STR_TO_DATE            |
+| INSTR           | LOCATE                 |
+| SUBSTR          | SUBSTRING              |
+| SYSDATE         | NOW()                  |
