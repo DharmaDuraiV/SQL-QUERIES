@@ -59,12 +59,23 @@ Table: t2
 
 
 ******************************************************************************************************************
+Set-Operator
+
+SQL set operators are used to combine the result sets of two or more SELECT statements into a single result. 
+Unlike SQL joins, which combine columns, set operators combine rows based on mathematical set theory principles.
+
+📌 Rules (VERY IMPORTANT):
+
+Same number of columns
+Same data types
+Same column order
 
 
 1. UNION
 
-Combines the results of two or more SELECT statements and removes duplicate rows. 
-It returns only distinct rows across all queries
+The UNION set operator in SQL combines the result sets of two or more SELECT statements into a single result set
+It automatically removing duplicate rows. 
+It is used to vertically stack data from different sources with a similar structure.
 
 SELECT column_name FROM table1
 UNION
@@ -92,8 +103,9 @@ o/p:
 ------------------------------------------------------------------------------------------------------------------
 2. UNION ALL
 
-Combines the results of two or more SELECT statements 
-but includes all rows, even if they are duplicates.
+The SQL UNION ALL operator combines the result sets of two or more SELECT statements into a single table.
+It including all duplicate rows. 
+This is its primary difference from the UNION operator, which automatically removes duplicates
 
 SELECT column_name FROM table1
 UNION ALL
@@ -127,8 +139,10 @@ Result (Including duplicates):
 
 3. INTERSECT
 
-
-Returns only the rows that are common to both SELECT statements (i.e., the intersection of two result sets).
+INTERSECT is a SQL set operator used to return only the common rows between two or more SELECT queries.
+It returns distinct (unique) values only
+It works like a mathematical intersection
+Only rows present in all result sets are included in the output
 
 SELECT column_name FROM table1
 INTERSECT
@@ -150,9 +164,10 @@ o/p:
 
 ------------------------------------------------------------------------------------------------------------------
 
-4.MINUS
- Returns the rows from the first SELECT statement 
- that are not present in the second SELECT statement.
+4.MINUS/EXCEPT  
+MINUS and EXCEPT are SQL set operators used to return distinct rows from the first query that are not present in the second query's result set. 
+They perform a set difference operation. 
+MINUS is primarily used in Oracle, while EXCEPT is the standard SQL operator used in PostgreSQL, SQL Server, and SQLite. 
 
 SELECT column_name FROM table1
 MINUS
@@ -172,5 +187,132 @@ o/p:
 |   10   |
 |   40   |
 +--------+
+-------------------------------------------------------------------------------------------------
+| Operation | Oracle | MySQL | PostgreSQL |
+| --------- | ------ | ----- | ---------- |
+| UNION     | ✅      | ✅     | ✅          |
+| UNION ALL | ✅      | ✅     | ✅          |
+| INTERSECT | ✅      | ❌     | ✅          |
+| MINUS     | ✅      | ❌     | ❌          |
+| EXCEPT    | ❌      | ❌     | ✅          |
+
+-----------------------------------------------------------------------------------------
+Perfect 🔥 This will help you crack interviews.
+
+Here are **50+ SET OPERATOR interview questions** (basic → advanced → real-time)
+
+---
+
+# 🚀 🔹 BASIC QUESTIONS (1–15)
+
+1. What are set operators in SQL?
+2. List all set operators.
+3. Difference between `UNION` and `UNION ALL`?
+4. Which operator removes duplicates?
+5. Which operator is faster: UNION or UNION ALL? Why?
+6. Can we use ORDER BY in both queries?
+7. Where should ORDER BY be written in UNION?
+8. What happens if column count is different?
+9. Can we combine different data types?
+10. What is INTERSECT?
+11. What is MINUS / EXCEPT?
+12. Difference between MINUS and EXCEPT?
+13. Is INTERSECT available in MySQL?
+14. Is MINUS available in PostgreSQL?
+15. Can we use aliases in set operators?
+
+---
+
+# 🚀 🔹 INTERMEDIATE QUESTIONS (16–30)
+
+16. Write a query to remove duplicates using UNION.
+17. Write a query to keep duplicates.
+18. How to simulate INTERSECT in MySQL?
+19. How to simulate MINUS in MySQL?
+20. What is the execution order in UNION?
+21. Can we use GROUP BY with UNION?
+22. Can we use DISTINCT with UNION ALL?
+23. What is the default behavior of UNION?
+24. Difference between UNION and JOIN?
+25. Can UNION be used on different tables?
+26. What happens if column names differ?
+27. Can we use LIMIT with UNION?
+28. Can we apply WHERE after UNION?
+29. Can UNION work with subqueries?
+30. What happens if NULL values exist?
+
+---
+
+# 🚀 🔹 OUTPUT-BASED QUESTIONS (31–40)
+
+### Given tables:
+
+EMP
+
+| id | name |
+| -- | ---- |
+| 1  | A    |
+| 2  | B    |
+| 3  | C    |
+
+MANAGER
+
+| id | name |
+| -- | ---- |
+| 2  | B    |
+| 3  | C    |
+| 4  | D    |
+
+---
+
+31. Output of:
+
+```sql
+SELECT name FROM emp
+UNION
+SELECT name FROM manager;
+```
+
+32. Output of UNION ALL?
+
+33. Output of INTERSECT?
+
+34. Output of MINUS (emp - manager)?
+
+35. Output of MINUS (manager - emp)?
+
+36. What happens if duplicate values exist?
+
+37. What if NULL values are present?
+
+38. Can UNION remove NULL duplicates?
+
+39. Output if ORDER BY applied?
+
+40. What if column order is changed?
+
+---
+
+# 🚀 🔹 ADVANCED QUESTIONS (41–55)
+
+41. Explain internal working of UNION.
+42. Why UNION is slower than UNION ALL?
+43. How sorting happens in UNION?
+44. Can indexes be used in UNION?
+45. Difference between UNION and OR condition?
+46. When to prefer UNION over JOIN?
+47. Can UNION be parallelized?
+48. What is execution plan of UNION?
+49. Can UNION cause performance issues?
+50. How to optimize UNION queries?
+51. What is UNION DISTINCT?
+52. Can we use window functions with UNION?
+53. Can UNION be nested?
+54. Can we mix UNION and UNION ALL?
+55. What is cost-based optimization in UNION?
+
+
+
+
 
 
