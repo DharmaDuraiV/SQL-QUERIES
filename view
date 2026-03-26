@@ -1,0 +1,309 @@
+What is a VIEW?
+
+- A VIEW is a virtual table
+- Created using a SELECT query
+- Stores only the query, not the data (except materialized view)
+
+One line:
+View = Stored Query
+
+--------------------------------------------------
+
+Syntax (Normal View)
+
+CREATE VIEW view_name AS
+SELECT column1, column2
+FROM table_name;
+
+--------------------------------------------------
+
+Example
+
+CREATE VIEW emp_view AS
+SELECT ename, sal
+FROM emp;
+
+--------------------------------------------------
+
+DROP VIEW
+
+DROP VIEW emp_view;
+
+--------------------------------------------------
+
+Uses of View
+
+- Hide sensitive columns (SAL, COMM)
+- Reuse queries
+- Simplify complex SQL
+- Provide custom data
+
+--------------------------------------------------
+
+Types of Views
+
+--------------------------------------------------
+
+1) Non-Materialized View (Normal View)
+
+Definition
+
+- Does NOT store data
+- Data comes from base table every time
+
+Key Points
+
+- No physical storage
+- Always shows latest data
+- Slower for large queries
+- No extra space needed
+
+Syntax
+
+CREATE VIEW view_name AS
+SELECT * FROM table_name;
+
+Example
+
+CREATE VIEW emp_view AS
+SELECT ename, deptno
+FROM emp;
+
+Working
+
+SELECT * FROM emp_view
+-> internally executes -> SELECT * FROM emp
+
+--------------------------------------------------
+
+DML Operations (IMPORTANT)
+
+Allowed
+
+- INSERT
+- UPDATE
+- DELETE
+
+Only if:
+
+- View is based on single table
+- No JOIN
+- No GROUP BY
+- No DISTINCT
+- No aggregate functions
+
+Not Allowed
+
+- If view contains:
+  - JOIN
+  - GROUP BY
+  - DISTINCT
+  - Functions
+
+--------------------------------------------------
+
+Advantages
+
+- Always updated data
+- No storage required
+- Simple to use
+
+Disadvantages
+
+- Slower for complex queries
+- Runs query every time
+
+--------------------------------------------------
+
+2) Materialized View
+
+Definition
+
+- Stores data physically
+- Acts like a snapshot of table
+
+Key Points
+
+- Data stored in database
+- Faster performance
+- Data may not be latest
+- Requires storage
+
+Syntax
+
+CREATE MATERIALIZED VIEW view_name AS
+SELECT * FROM table_name;
+
+Example
+
+CREATE MATERIALIZED VIEW emp_mat_view
+AS
+SELECT ename, sal FROM emp;
+
+--------------------------------------------------
+
+DROP MATERIALIZED VIEW
+
+DROP MATERIALIZED VIEW emp_mat_view;
+
+--------------------------------------------------
+
+DML Operations
+
+Not Allowed
+
+- INSERT
+- UPDATE
+- DELETE
+
+Materialized view is read-only
+
+--------------------------------------------------
+
+PL/SQL REFRESH (Oracle)
+
+  * DBMS_MVIEW → Oracle package 
+  * 'C' → Complete (full reload) 
+  * 'F' → Fast (only changes) 
+  * '?' → Force (auto decide) 
+  * / → Executes PL/SQL block in SQL*Plus
+
+-- Basic Refresh
+BEGIN
+  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW');
+END;
+/
+
+-- Complete Refresh
+BEGIN
+  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW', 'C');
+END;
+/
+
+-- Fast Refresh
+BEGIN
+  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW', 'F');
+END;
+/
+
+-- Force Refresh
+BEGIN
+  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW', '?');
+END;
+/
+
+-- Multiple Views
+BEGIN
+  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW,DEPT_MAT_VIEW');
+END;
+/
+  
+
+--------------------------------------------------
+
+Advantages
+
+- Fast query execution
+- Suitable for large data
+- Good for reporting
+
+Disadvantages
+
+- Needs storage
+- Data can become outdated
+
+--------------------------------------------------
+
+Difference (WITH DML)
+
+Feature            Normal View            Materialized View
+------------------------------------------------------------
+Data Stored        No                     Yes
+DML Allowed        Yes (conditions)       No
+Performance        Slower                Faster
+Data Freshness     Always latest          May be old
+Space              No                     Yes
+
+--------------------------------------------------
+
+Final Revision
+
+- View = Virtual table
+- Normal View = No data stored
+- Materialized View = Data stored physically
+- Normal View = DML possible (with conditions)
+- Materialized View = Read-only (no DML)
+- Use DROP VIEW / DROP MATERIALIZED VIEW to delete
+- Refresh using DBMS_MVIEW in PL/SQL
+
+--------------------------------------------------
+
+  CHECK VIEW / MATERIALIZED VIEW EXISTENCE IN ORACLE
+
+--------------------------------------------------
+
+1) Check Normal View
+
+SELECT view_name
+FROM user_views
+WHERE view_name = 'EMP_VIEW';
+
+--------------------------------------------------
+
+2) Check Materialized View
+
+SELECT mview_name
+FROM user_mviews
+WHERE mview_name = 'EMP_MAT_VIEW';
+
+--------------------------------------------------
+
+3) Check in All Schemas (if needed)
+
+-- Normal View
+SELECT owner, view_name
+FROM all_views
+WHERE view_name = 'EMP_VIEW';
+
+-- Materialized View
+SELECT owner, mview_name
+FROM all_mviews
+WHERE mview_name = 'EMP_MAT_VIEW';
+
+--------------------------------------------------
+
+4) Check Structure (Definition)
+
+-- Normal View
+SELECT text
+FROM user_views
+WHERE view_name = 'EMP_VIEW';
+
+-- Materialized View
+SELECT query
+FROM user_mviews
+WHERE mview_name = 'EMP_MAT_VIEW';
+
+--------------------------------------------------
+
+5) Quick Check (Table-like)
+
+SELECT * FROM emp_view;
+SELECT * FROM emp_mat_view;
+
+-- If exists → works
+-- If not → error
+
+--------------------------------------------------
+
+IMPORTANT NOTES
+
+- View names are stored in UPPERCASE in Oracle
+- Always use 'EMP_VIEW' not 'emp_view'
+- user_views → your schema
+- all_views → all accessible schemas
+- dba_views → full database (needs privilege)
+
+--------------------------------------------------
+
+  
