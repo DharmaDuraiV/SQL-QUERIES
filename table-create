@@ -1,0 +1,277 @@
+1. Customer–Order System
+
+Design a database:
+
+Create customers table:
+customer_id, name, email, phone
+
+Each customer can place multiple orders.
+
+Create orders table:
+order_id, order_date, total_amount, customer_id
+
+
+
+2. Student–Marks System
+
+Design a database:
+
+Create students table:
+student_id, name, class, section
+
+Each student can have multiple marks.
+
+Create marks table:
+mark_id, subject, score, student_id
+
+
+
+3. Employee–Project System
+
+Design a database:
+
+Create employees table:
+emp_id, name, role, salary
+
+Each employee can work on multiple projects.
+
+Create projects table:
+project_id, project_name, emp_id
+
+
+
+4. User–Comment System
+
+Design a database:
+
+Create users table:
+user_id, username, email
+
+Each user can write multiple comments.
+
+Create comments table:
+comment_id, content, created_at, user_id
+
+
+
+5. Vendor–Product System
+
+Design a database:
+
+Create vendors table:
+vendor_id, vendor_name, location
+
+Each vendor can supply multiple products.
+
+Create products table:
+product_id, product_name, price, vendor_id
+
+
+
+6. Hospital–Doctor System
+
+Design a database:
+
+Create hospitals table:
+hospital_id, hospital_name, city
+
+Each hospital can have multiple doctors.
+
+Create doctors table:
+doctor_id, name, specialization, hospital_id
+
+
+
+7. Library–Member System
+
+Design a database:
+
+Create libraries table:
+library_id, name, address
+
+Each library can have multiple members.
+
+Create members table:
+member_id, member_name, join_date, library_id
+
+
+
+8. Movie–Review System
+
+Design a database:
+
+Create movies table:
+movie_id, title, release_year
+
+Each movie can have multiple reviews.
+
+Create reviews table:
+review_id, rating, comment, movie_id
+
+
+
+9. Flight–Passenger System
+
+Design a database:
+
+Create flights table:
+flight_id, flight_name, source, destination
+
+Each flight can have multiple passengers.
+
+Create passengers table:
+passenger_id, name, age, flight_id
+
+
+
+10. School–Teacher System
+
+Design a database:
+
+Create schools table:
+school_id, school_name, location
+
+Each school can have multiple teachers.
+
+Create teachers table:
+teacher_id, name, subject, school_id
+
+
+
+11. Account–Payment System
+
+Design a database:
+
+Create accounts table:
+account_id, holder_name, balance
+
+Each account can have multiple payments.
+
+Create payments table:
+payment_id, amount, payment_date, account_id
+
+
+
+12. Team–Player System
+
+Design a database:
+
+Create teams table:
+team_id, team_name, coach
+
+Each team can have multiple players.
+
+Create players table:
+player_id, player_name, age, team_id
+
+
+
+13. Restaurant–Food Order System
+
+Design a database:
+
+Create restaurants table:
+restaurant_id, name, location
+
+Each restaurant can have multiple food orders.
+
+Create food_orders table:
+order_id, item_name, price, restaurant_id
+
+
+
+14. Course–Assignment System
+
+Design a database:
+
+Create courses table:
+course_id, course_name, duration
+
+Each course can have multiple assignments.
+
+Create assignments table:
+assignment_id, title, due_date, course_id
+
+
+
+15. Car–Service Record System
+
+Design a database:
+
+Create cars table:
+car_id, model, brand, year
+
+Each car can have multiple service records.
+
+Create service_records table:
+service_id, service_date, cost, car_id
+
+
+
+16. Event–Attendee System
+
+Design a database:
+
+Create events table:
+event_id, event_name, event_date
+
+Each event can have multiple attendees.
+
+Create attendees table:
+attendee_id, name, email, event_id
+
+
+
+17. Warehouse–Inventory System
+
+Design a database:
+
+Create warehouses table:
+warehouse_id, location, capacity
+
+Each warehouse can store multiple inventory items.
+
+Create inventory table:
+inventory_id, product_name, quantity, warehouse_id
+
+
+
+18. Author–Article System
+
+Design a database:
+
+Create authors table:
+author_id, name, expertise
+
+Each author can write multiple articles.
+
+Create articles table:
+article_id, title, publish_date, author_id
+
+
+
+19. Bank–Loan System
+
+Design a database:
+
+Create banks table:
+bank_id, bank_name, branch
+
+Each bank can provide multiple loans.
+
+Create loans table:
+loan_id, amount, interest_rate, bank_id
+
+
+
+20. Company–Department System
+
+Design a database:
+
+Create companies table:
+company_id, company_name, location
+
+Each company can have multiple departments.
+
+Create departments table:
+dept_id, dept_name, company_id
