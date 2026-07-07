@@ -1,277 +1,1064 @@
-1. Customer–Order System
+SQL DDL Interview Questions – Beginner Level (Part 1)
 
-Design a database:
+---
 
-Create customers table:
-customer_id, name, email, phone
+1. Student Management System
 
-Each customer can place multiple orders.
+---
 
-Create orders table:
-order_id, order_date, total_amount, customer_id
+Scenario
 
+A school wants to maintain student details and the marks obtained by students in different subjects.
 
+Tables
 
-2. Student–Marks System
+Students
+student_id, first_name, last_name, gender, date_of_birth, email, phone, address, admission_date
 
-Design a database:
+Subjects
+subject_id, subject_name, subject_code
 
-Create students table:
-student_id, name, class, section
+Marks
+mark_id, student_id, subject_id, marks, exam_type, exam_date
 
-Each student can have multiple marks.
+Business Rules
 
-Create marks table:
-mark_id, subject, score, student_id
+* Every student must have a unique student ID.
+* Email and phone number should be unique.
+* Gender should be Male, Female, or Other.
+* Marks should be between 0 and 100.
+* Every mark must belong to one student.
+* Every mark must belong to one subject.
+* Admission date should default to the current date.
 
+---
 
+2. Employee Management System
 
-3. Employee–Project System
+---
 
-Design a database:
+Scenario
 
-Create employees table:
-emp_id, name, role, salary
+A company wants to store employee information and department details.
 
-Each employee can work on multiple projects.
+Tables
 
-Create projects table:
-project_id, project_name, emp_id
+Departments
+department_id, department_name, location
 
+Employees
+employee_id, first_name, last_name, email, phone, designation, salary, hire_date, department_id
 
+Business Rules
 
-4. User–Comment System
+* Employee ID must be unique.
+* Department name should be unique.
+* Email and phone number should be unique.
+* Salary must be greater than zero.
+* Every employee belongs to one department.
+* Hire date should not be NULL.
 
-Design a database:
+---
 
-Create users table:
-user_id, username, email
+3. Customer Order System
 
-Each user can write multiple comments.
+---
 
-Create comments table:
-comment_id, content, created_at, user_id
+Scenario
 
+An online shopping application stores customer details and customer orders.
 
+Tables
 
-5. Vendor–Product System
+Customers
+customer_id, customer_name, email, phone, address
 
-Design a database:
+Orders
+order_id, customer_id, order_date, total_amount, order_status
 
-Create vendors table:
-vendor_id, vendor_name, location
+Business Rules
 
-Each vendor can supply multiple products.
+* Customer email should be unique.
+* Phone number should be unique.
+* Every customer can place multiple orders.
+* Every order belongs to only one customer.
+* Total amount should be greater than zero.
+* Order status can be Pending, Shipped, Delivered, or Cancelled.
+* Order date should default to the current date.
 
-Create products table:
-product_id, product_name, price, vendor_id
+---
 
+4. Library Management System
 
+---
 
-6. Hospital–Doctor System
+Scenario
 
-Design a database:
+A library maintains books and borrowing records.
 
-Create hospitals table:
-hospital_id, hospital_name, city
+Tables
 
-Each hospital can have multiple doctors.
+Books
+book_id, title, author, category, isbn, price
 
-Create doctors table:
-doctor_id, name, specialization, hospital_id
+Members
+member_id, member_name, email, phone, join_date
 
+Borrow_Records
+borrow_id, member_id, book_id, issue_date, return_date
 
+Business Rules
 
-7. Library–Member System
+* ISBN must be unique.
+* Member email should be unique.
+* Book price should be greater than zero.
+* One member can borrow multiple books.
+* One book can be borrowed many times.
+* Join date should default to the current date.
 
-Design a database:
+---
 
-Create libraries table:
-library_id, name, address
+5. Hospital Management System
 
-Each library can have multiple members.
+---
 
-Create members table:
-member_id, member_name, join_date, library_id
+Scenario
 
+A hospital wants to manage doctors, patients, and appointments.
 
+Tables
 
-8. Movie–Review System
+Doctors
+doctor_id, doctor_name, specialization, phone, email
 
-Design a database:
+Patients
+patient_id, patient_name, gender, date_of_birth, phone, address
 
-Create movies table:
-movie_id, title, release_year
+Appointments
+appointment_id, doctor_id, patient_id, appointment_date, appointment_time, status
 
-Each movie can have multiple reviews.
+Business Rules
 
-Create reviews table:
-review_id, rating, comment, movie_id
+* Doctor email should be unique.
+* Doctor phone should be unique.
+* Patient phone should be unique.
+* One doctor can attend many appointments.
+* One patient can book many appointments.
+* Appointment status can be Scheduled, Completed, or Cancelled.
 
+---
 
+6. School Management System
 
-9. Flight–Passenger System
+---
 
-Design a database:
+Scenario
 
-Create flights table:
-flight_id, flight_name, source, destination
+A school wants to maintain teachers, classrooms, and students.
 
-Each flight can have multiple passengers.
+Tables
 
-Create passengers table:
-passenger_id, name, age, flight_id
+Schools
+school_id, school_name, address, phone
 
+Teachers
+teacher_id, teacher_name, subject, email, phone, school_id
 
+Classrooms
+classroom_id, room_number, floor, school_id
 
-10. School–Teacher System
+Students
+student_id, student_name, gender, date_of_birth, classroom_id, school_id
 
-Design a database:
+Business Rules
 
-Create schools table:
-school_id, school_name, location
+* School name should be unique.
+* Teacher email should be unique.
+* One school can have multiple teachers.
+* One classroom can have multiple students.
+* Every classroom belongs to one school.
 
-Each school can have multiple teachers.
+---
 
-Create teachers table:
-teacher_id, name, subject, school_id
+7. Banking System
 
+---
 
+Scenario
 
-11. Account–Payment System
+A bank stores customer accounts and transaction details.
 
-Design a database:
+Tables
 
-Create accounts table:
-account_id, holder_name, balance
+Customers
+customer_id, customer_name, email, phone, address
 
-Each account can have multiple payments.
+Accounts
+account_id, customer_id, account_number, account_type, balance, opening_date
 
-Create payments table:
-payment_id, amount, payment_date, account_id
+Transactions
+transaction_id, account_id, transaction_type, amount, transaction_date
 
+Business Rules
 
+* Account number should be unique.
+* Balance cannot be negative.
+* Transaction amount must be greater than zero.
+* Transaction type can be Credit or Debit.
+* One customer can have multiple accounts.
+* One account can have multiple transactions.
 
-12. Team–Player System
+---
 
-Design a database:
+8. Restaurant Management System
 
-Create teams table:
-team_id, team_name, coach
+---
 
-Each team can have multiple players.
+Scenario
 
-Create players table:
-player_id, player_name, age, team_id
+A restaurant maintains menu items and customer orders.
 
+Tables
 
+Restaurants
+restaurant_id, restaurant_name, address, phone
 
-13. Restaurant–Food Order System
+Menus
+menu_id, restaurant_id, item_name, category, price
 
-Design a database:
+Orders
+order_id, restaurant_id, customer_name, total_amount, order_date
 
-Create restaurants table:
-restaurant_id, name, location
+Business Rules
 
-Each restaurant can have multiple food orders.
+* Menu price must be greater than zero.
+* One restaurant can have multiple menu items.
+* One restaurant can receive multiple orders.
+* Total amount should be greater than zero.
+* Order date should default to the current date.
 
-Create food_orders table:
-order_id, item_name, price, restaurant_id
+---
 
+9. Hotel Booking System
 
+---
 
-14. Course–Assignment System
+Scenario
 
-Design a database:
+A hotel maintains room details and customer bookings.
 
-Create courses table:
-course_id, course_name, duration
+Tables
 
-Each course can have multiple assignments.
+Hotels
+hotel_id, hotel_name, city, address
 
-Create assignments table:
-assignment_id, title, due_date, course_id
+Rooms
+room_id, hotel_id, room_number, room_type, price
 
+Bookings
+booking_id, room_id, customer_name, check_in_date, check_out_date, booking_date
 
+Business Rules
 
-15. Car–Service Record System
+* Room number should be unique within a hotel.
+* Room price must be greater than zero.
+* Check-out date must be later than the check-in date.
+* One hotel can have multiple rooms.
+* One room can have multiple bookings.
 
-Design a database:
+---
 
-Create cars table:
-car_id, model, brand, year
+10. Movie Ticket Booking System
 
-Each car can have multiple service records.
+---
 
-Create service_records table:
-service_id, service_date, cost, car_id
+Scenario
 
+A cinema manages movies, shows, and ticket bookings.
 
+Tables
 
-16. Event–Attendee System
+Movies
+movie_id, movie_name, language, duration, release_date
 
-Design a database:
+Shows
+show_id, movie_id, show_date, show_time, screen_number
 
-Create events table:
-event_id, event_name, event_date
+Tickets
+ticket_id, show_id, customer_name, seat_number, ticket_price, booking_date
 
-Each event can have multiple attendees.
+Business Rules
 
-Create attendees table:
-attendee_id, name, email, event_id
+* Movie duration must be greater than zero.
+* Ticket price must be greater than zero.
+* Seat number should be unique for a particular show.
+* One movie can have multiple shows.
+* One show can have multiple ticket bookings.
+* Booking date should default to the current date.
 
 
+11. Online Shopping (E-Commerce) System
 
-17. Warehouse–Inventory System
+---
 
-Design a database:
+Scenario
 
-Create warehouses table:
-warehouse_id, location, capacity
+An online shopping application allows customers to purchase products, place orders, and make payments.
 
-Each warehouse can store multiple inventory items.
+Tables
 
-Create inventory table:
-inventory_id, product_name, quantity, warehouse_id
+Customers
 
+customer_id, first_name, last_name, email, phone, address
 
+Categories
 
-18. Author–Article System
+category_id, category_name, description
 
-Design a database:
+Products
 
-Create authors table:
-author_id, name, expertise
+product_id, product_name, description, price, stock_quantity, category_id
 
-Each author can write multiple articles.
+Orders
 
-Create articles table:
-article_id, title, publish_date, author_id
+order_id, customer_id, order_date, total_amount, order_status
 
+Order_Items
 
+order_item_id, order_id, product_id, quantity, unit_price
 
-19. Bank–Loan System
+Payments
 
-Design a database:
+payment_id, order_id, payment_date, payment_method, payment_amount, payment_status
 
-Create banks table:
-bank_id, bank_name, branch
+Business Rules
 
-Each bank can provide multiple loans.
+* Customer email and phone must be unique.
+* Category name should be unique.
+* Product price must be greater than zero.
+* Stock quantity cannot be negative.
+* One category can contain multiple products.
+* One customer can place multiple orders.
+* One order can contain multiple products.
+* Quantity must be greater than zero.
+* Payment amount must be greater than zero.
+* Payment status can be Pending, Success, Failed, or Refunded.
 
-Create loans table:
-loan_id, amount, interest_rate, bank_id
+---
 
+12. Food Delivery System
 
+---
 
-20. Company–Department System
+Scenario
 
-Design a database:
+A food delivery application allows customers to order food from restaurants through delivery partners.
 
-Create companies table:
-company_id, company_name, location
+Tables
 
-Each company can have multiple departments.
+Customers
 
-Create departments table:
-dept_id, dept_name, company_id
+customer_id, customer_name, email, phone, address
+
+Restaurants
+
+restaurant_id, restaurant_name, location, phone
+
+Menu_Items
+
+menu_id, restaurant_id, item_name, category, price
+
+Orders
+
+order_id, customer_id, restaurant_id, order_date, total_amount, order_status
+
+Delivery_Partners
+
+partner_id, partner_name, phone, vehicle_number
+
+Deliveries
+
+delivery_id, order_id, partner_id, delivery_status, delivered_time
+
+Business Rules
+
+* Customer email must be unique.
+* Restaurant phone must be unique.
+* Menu price must be greater than zero.
+* One restaurant can have multiple menu items.
+* One customer can place multiple orders.
+* One delivery partner can deliver multiple orders.
+* Order status can be Preparing, Picked, Delivered, or Cancelled.
+
+---
+
+13. Online Learning Platform
+
+---
+
+Scenario
+
+An online learning platform offers courses, assignments, and student enrollments.
+
+Tables
+
+Instructors
+
+instructor_id, instructor_name, email, phone
+
+Students
+
+student_id, student_name, email, phone
+
+Courses
+
+course_id, course_name, duration, fees, instructor_id
+
+Enrollments
+
+enrollment_id, student_id, course_id, enrollment_date
+
+Assignments
+
+assignment_id, course_id, title, due_date
+
+Business Rules
+
+* Instructor email must be unique.
+* Student email must be unique.
+* Course name should be unique.
+* Course fees must be greater than zero.
+* One instructor can teach multiple courses.
+* One student can enroll in multiple courses.
+* One course can have multiple assignments.
+
+---
+
+14. Airline Reservation System
+
+---
+
+Scenario
+
+An airline manages flights, passengers, and ticket bookings.
+
+Tables
+
+Flights
+
+flight_id, flight_number, source, destination, departure_time, arrival_time
+
+Passengers
+
+passenger_id, passenger_name, email, phone, passport_number
+
+Bookings
+
+booking_id, passenger_id, flight_id, booking_date, seat_number
+
+Payments
+
+payment_id, booking_id, amount, payment_date, payment_status
+
+Business Rules
+
+* Flight number must be unique.
+* Passport number must be unique.
+* Seat number should be unique for each flight.
+* One flight can have multiple passengers.
+* One passenger can book multiple flights.
+* Payment amount must be greater than zero.
+
+---
+
+15. Sports Club Management
+
+---
+
+Scenario
+
+A sports club manages teams, players, tournaments, and matches.
+
+Tables
+
+Teams
+
+team_id, team_name, coach_name
+
+Players
+
+player_id, player_name, age, role, team_id
+
+Tournaments
+
+tournament_id, tournament_name, location, start_date, end_date
+
+Matches
+
+match_id, tournament_id, team1_id, team2_id, match_date, winner_team_id
+
+Business Rules
+
+* Team name should be unique.
+* Player age must be greater than 15.
+* One team can have multiple players.
+* One tournament can have multiple matches.
+* A team can participate in multiple matches.
+
+---
+
+16. Payroll Management System
+
+---
+
+Scenario
+
+A company wants to manage employee salaries and monthly payroll.
+
+Tables
+
+Departments
+
+department_id, department_name
+
+Employees
+
+employee_id, employee_name, department_id, designation, salary
+
+Payroll
+
+payroll_id, employee_id, pay_month, basic_salary, bonus, deduction, net_salary
+
+Business Rules
+
+* Department name should be unique.
+* Salary must be greater than zero.
+* Bonus and deduction cannot be negative.
+* Net salary cannot be negative.
+* One employee can have multiple payroll records.
+
+---
+
+17. Warehouse Management System
+
+---
+
+Scenario
+
+A company stores products in warehouses supplied by different suppliers.
+
+Tables
+
+Warehouses
+
+warehouse_id, warehouse_name, location
+
+Suppliers
+
+supplier_id, supplier_name, email, phone
+
+Products
+
+product_id, product_name, price, supplier_id
+
+Inventory
+
+inventory_id, warehouse_id, product_id, quantity
+
+Business Rules
+
+* Supplier email must be unique.
+* Product price must be greater than zero.
+* Inventory quantity cannot be negative.
+* One warehouse stores multiple products.
+* One supplier supplies multiple products.
+
+---
+
+18. Logistics Management System
+
+---
+
+Scenario
+
+A logistics company manages shipments, vehicles, and drivers.
+
+Tables
+
+Drivers
+
+driver_id, driver_name, phone, license_number
+
+Vehicles
+
+vehicle_id, vehicle_number, vehicle_type, capacity
+
+Shipments
+
+shipment_id, source, destination, shipment_date, status
+
+Deliveries
+
+delivery_id, shipment_id, driver_id, vehicle_id, delivery_date
+
+Business Rules
+
+* License number must be unique.
+* Vehicle number must be unique.
+* Vehicle capacity must be greater than zero.
+* One driver can handle multiple deliveries.
+* One vehicle can be assigned to multiple deliveries.
+* Shipment status can be Pending, In Transit, Delivered, or Cancelled.
+
+---
+
+19. Vehicle Service Management
+
+---
+
+Scenario
+
+A vehicle service center maintains customer vehicles and service history.
+
+Tables
+
+Customers
+
+customer_id, customer_name, phone, email
+
+Vehicles
+
+vehicle_id, customer_id, registration_number, brand, model, manufacture_year
+
+Service_Records
+
+service_id, vehicle_id, service_date, service_type, service_cost
+
+Business Rules
+
+* Registration number must be unique.
+* Service cost must be greater than zero.
+* One customer can own multiple vehicles.
+* One vehicle can have multiple service records.
+* Manufacture year should not exceed the current year.
+
+---
+
+20. Event Management System
+
+---
+
+Scenario
+
+An event company organizes events and manages participants.
+
+Tables
+
+Organizers
+
+organizer_id, organizer_name, email, phone
+
+Events
+
+event_id, event_name, event_date, venue, organizer_id
+
+Participants
+
+participant_id, participant_name, email, phone
+
+Registrations
+
+registration_id, event_id, participant_id, registration_date
+
+Business Rules
+
+* Organizer email must be unique.
+* Participant email must be unique.
+* Event name should be unique.
+* One organizer can organize multiple events.
+* One event can have multiple participants.
+* One participant can register for multiple events.
+* Registration date should default to the current date.
+
+
+---
+
+## 21. Social Media Platform
+
+### Scenario
+
+Design a database for a social media application where users can create posts, follow other users, react to posts, send messages, and receive notifications.
+
+### Tables
+
+Posts
+
+post_id, title, description, media_url, visibility, created_at
+
+Reactions
+
+reaction_id, post_id, reaction_type, reacted_at
+
+Messages
+
+message_id, sender_id, receiver_id, message_text, sent_at
+
+Notifications
+
+notification_id, receiver_id, notification_type, message, created_at
+
+Followers
+
+follow_id, follower_id, following_id, followed_at
+
+### Business Rules
+
+* A post can receive multiple reactions.
+* A user cannot react twice to the same post.
+* A user cannot follow themselves.
+* Visibility can be Public, Friends, or Private.
+* Notification type can be Like, Comment, Follow, or Message.
+
+---
+
+## 22. CRM System
+
+### Scenario
+
+A company wants to manage business leads and client interactions.
+
+### Tables
+
+Leads
+
+lead_id, lead_name, source, status, created_at
+
+Meetings
+
+meeting_id, lead_id, meeting_date, meeting_time, meeting_type
+
+Opportunities
+
+opportunity_id, lead_id, expected_revenue, stage
+
+Contracts
+
+contract_id, opportunity_id, contract_number, start_date, end_date
+
+Activities
+
+activity_id, lead_id, activity_type, activity_date
+
+### Business Rules
+
+* Contract number must be unique.
+* Expected revenue must be greater than zero.
+* Stage can be New, Qualified, Proposal, Won, Lost.
+* One lead can have multiple meetings.
+
+---
+
+## 23. Manufacturing System
+
+### Scenario
+
+A manufacturing company tracks production activities.
+
+### Tables
+
+Factories
+
+factory_id, factory_name, location
+
+Raw_Materials
+
+material_id, material_name, unit, available_quantity
+
+Production
+
+production_id, factory_id, production_date, shift
+
+Production_Items
+
+production_item_id, production_id, material_id, quantity_used
+
+Machines
+
+machine_id, machine_name, machine_type, installation_date
+
+### Business Rules
+
+* Quantity used must be greater than zero.
+* Available quantity cannot be negative.
+* One factory has multiple machines.
+* One production can consume multiple raw materials.
+
+---
+
+## 24. Insurance System
+
+### Scenario
+
+Design a database to maintain insurance policies and claims.
+
+### Tables
+
+Policy_Types
+
+policy_type_id, policy_name, coverage_amount
+
+Policies
+
+policy_id, policy_number, policy_type_id, premium
+
+Claims
+
+claim_id, policy_id, claim_date, claim_amount
+
+Approvals
+
+approval_id, claim_id, approved_by, approval_status
+
+Nominees
+
+nominee_id, policy_id, nominee_name, relationship
+
+### Business Rules
+
+* Policy number must be unique.
+* Claim amount must be greater than zero.
+* Premium must be greater than zero.
+* Approval status can be Approved, Pending, Rejected.
+
+---
+
+## 25. OTT Streaming Platform
+
+### Scenario
+
+Design a movie streaming application.
+
+### Tables
+
+Subscription_Plans
+
+plan_id, plan_name, monthly_fee, screen_limit
+
+Subscriptions
+
+subscription_id, plan_id, start_date, end_date
+
+Movies
+
+movie_id, movie_name, language, duration
+
+Episodes
+
+episode_id, movie_id, episode_number, duration
+
+Watch_History
+
+history_id, movie_id, watched_at, watch_duration
+
+Ratings
+
+rating_id, movie_id, rating, review
+
+### Business Rules
+
+* Monthly fee must be greater than zero.
+* Rating must be between 1 and 5.
+* Duration must be greater than zero.
+* One movie can have multiple ratings.
+
+---
+
+## 26. Ride Booking Application
+
+### Scenario
+
+Design a ride booking application.
+
+### Tables
+
+Drivers
+
+driver_id, driver_name, license_number, experience
+
+Vehicles
+
+vehicle_id, driver_id, vehicle_number, model
+
+Rides
+
+ride_id, pickup_location, drop_location, distance
+
+Ride_History
+
+history_id, ride_id, start_time, end_time
+
+Payments
+
+payment_id, ride_id, amount, payment_method
+
+### Business Rules
+
+* License number must be unique.
+* Vehicle number must be unique.
+* Distance must be greater than zero.
+* Amount must be greater than zero.
+
+---
+
+## 27. University Management System
+
+### Scenario
+
+Design a university database.
+
+### Tables
+
+Faculties
+
+faculty_id, faculty_name
+
+Programs
+
+program_id, program_name, duration
+
+Semesters
+
+semester_id, semester_name
+
+Courses
+
+course_id, course_name, credits
+
+Results
+
+result_id, course_id, semester_id, marks, grade
+
+### Business Rules
+
+* Credits must be greater than zero.
+* Marks must be between 0 and 100.
+* Grade should be A, B, C, D, E, or F.
+* One semester has multiple courses.
+
+---
+
+## 28. Job Portal System
+
+### Scenario
+
+Design a recruitment portal.
+
+### Tables
+
+Companies
+
+company_id, company_name, website
+
+Job_Postings
+
+job_posting_id, company_id, title, salary
+
+Applicants
+
+applicant_id, full_name, email
+
+Applications
+
+application_id, applicant_id, job_posting_id, applied_date
+
+Interviews
+
+interview_id, application_id, interview_date, result
+
+### Business Rules
+
+* Email must be unique.
+* Salary must be greater than zero.
+* Result can be Selected, Rejected, Pending.
+* One job posting receives multiple applications.
+
+---
+
+## 29. Inventory & Sales Management
+
+### Scenario
+
+Design a database to track inventory movement.
+
+### Tables
+
+Suppliers
+
+supplier_id, supplier_name, contact_number
+
+Purchase_Orders
+
+purchase_order_id, supplier_id, order_date
+
+Sales_Orders
+
+sales_order_id, order_date, total_amount
+
+Inventory_Movement
+
+movement_id, movement_type, quantity, movement_date
+
+Invoices
+
+invoice_id, invoice_number, invoice_date, total_amount
+
+### Business Rules
+
+* Invoice number must be unique.
+* Quantity must be greater than zero.
+* Total amount must be greater than zero.
+* Movement type can be IN or OUT.
+
+---
+
+## 30. ERP System
+
+### Scenario
+
+Design an ERP database for an organization.
+
+### Tables
+
+Employees
+
+employee_id, employee_name, designation
+
+Attendance
+
+attendance_id, employee_id, attendance_date, status
+
+Leave_Requests
+
+leave_id, employee_id, leave_type, from_date, to_date
+
+Payroll
+
+payroll_id, employee_id, salary, bonus, deduction
+
+Expenses
+
+expense_id, expense_type, amount, expense_date
+
+Assets
+
+asset_id, asset_name, purchase_date, asset_value
+
+### Business Rules
+
+* Salary must be greater than zero.
+* Asset value must be greater than zero.
+* Expense amount must be greater than zero.
+* Attendance status can be Present, Absent, or Leave.
+* Leave type can be Casual, Sick, or Earned.
+
+
