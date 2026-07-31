@@ -1,1 +1,21 @@
 
+1.WAQTD Employee Name,Job,Salary,Department Name and Department Location for employees working in the SALES department and earning more than one thousand salary.
+2.WAQTD Employee Name,Employee Salary,Manager Name and Manager Salary for employees earning less salary than their manager and working as CLERK.
+3.WAQTD Employee Name,Employee Department Name,Employee Department Location,Manager Name,Manager Department Name and Manager Department Location for employees working in DALLAS and earning more than two thousand salary.
+4.WAQTD Employee Name,Job,Department Name and Department Location for employees working in the SALES department and hired after the year 1981.
+5.WAQTD Employee Name,Employee Department Name,Manager Name,Manager Department Name and Manager's Manager Name for employees working in the RESEARCH department and whose manager is working as MANAGER.
+6.WAQTD Employee Name,Hiredate,Manager Name and Manager Hiredate for employees hired before their manager and earning more than one thousand five hundred salary.
+7.WAQTD Employee Name,Employee Department Name,Manager Name,Manager Department Name and Manager's Manager Department Name for employees working in the CHICAGO location and whose manager's manager is working as PRESIDENT.
+8.WAQTD Employee Name,Salary,Department Name and Department Location for employees earning between one thousand and three thousand salary and working in the ACCOUNTING department.
+9.WAQTD Employee Name,Employee Job,Employee Department Name,Manager Name and Manager Job for employees working as CLERK and whose manager is working as MANAGER.
+10.WAQTD Employee Name,Employee Department Name,Manager Name,Manager Department Name,Manager's Manager Name and Manager's Manager Department Name for employees working in the SALES department and whose manager's manager is working as PRESIDENT.
+11.WAQTD Employee Name,Employee Salary,Employee Department Name,Manager Name,Manager Salary,Manager Department Name and Manager's Manager Name for employees earning less salary than their manager and receiving commission.
+12.WAQTD Employee Name,Job,Department Name and Department Location for employees working in DALLAS and earning more than two thousand five hundred salary.
+13.WAQTD Employee Name,Employee Job,Employee Department Name,Manager Name,Manager Department Name and Manager's Manager Name for employees working as SALESMAN and earning more than one thousand salary.
+14.WAQTD Employee Name,Employee Department Name,Manager Name and Manager Department Name for employees and managers working in different departments and employees hired after the year 1981.
+15.WAQTD Employee Name,Employee Salary,Employee Department Name,Manager Name,Manager Salary,Manager Department Name,Manager's Manager Name and Manager's Manager Department Name for employees working in the RESEARCH department and earning more than two thousand salary.
+16.WAQTD Employee Name,Employee Department Name,Manager Name and Manager Job for employees whose manager is working as MANAGER and employee job is ANALYST.
+17.WAQTD Employee Name,Salary,Department Name and Department Location for employees working in the ACCOUNTING department and hired before the year 1982.
+18.WAQTD Employee Number,Employee Name,Employee Job,Employee Salary,Employee Department Name,Employee Department Location,Manager Number,Manager Name,Manager Job,Manager Salary,Manager Department Name,Manager Department Location,Manager's Manager Number,Manager's Manager Name,Manager's Manager Job,Manager's Manager Department Name and Manager's Manager Department Location for employees earning more than one thousand salary whose manager is working as MANAGER and whose manager's manager is working as PRESIDENT.
+19.WAQTD Employee Name,Employee Department Name,Manager Name,Manager Department Name and Manager's Manager Name for employees whose manager belongs to the ACCOUNTING department and employees working as SALESMAN.
+20.WAQTD Employee Name,Employee Salary,Manager Name,Manager Salary,Manager's Manager Name and Manager's Manager Department Name for employees working as ANALYST and earning more than two thousand salary and whose manager belongs to the RESEARCH department.
