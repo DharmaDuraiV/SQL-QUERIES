@@ -1,0 +1,369 @@
+-- 1. Employees working in SALES and earning more than 1500
+SELECT e.ename, e.job, e.sal, d.dname, d.loc
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE d.dname = 'SALES'
+AND e.sal > 1500;
+
+
+-- 2. Employees who have a manager
+SELECT e.ename AS employee_name,
+       m.ename AS manager_name
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno;
+
+
+-- 3. All departments including departments without employees
+SELECT d.dname, e.ename
+FROM dept d
+LEFT JOIN emp e
+ON d.deptno = e.deptno;
+
+
+-- 4. Employees earning more than their manager
+SELECT e.ename AS employee_name,
+       e.sal AS employee_salary,
+       m.ename AS manager_name,
+       m.sal AS manager_salary
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.sal > m.sal;
+
+
+-- 5. Employees earning more than the average salary of their department
+SELECT e.ename, e.sal, d.dname
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT deptno, AVG(sal) avg_sal
+    FROM emp
+    GROUP BY deptno
+) a
+ON e.deptno = a.deptno
+WHERE e.sal > a.avg_sal;
+
+
+-- 6. Employees working in the same department as JONES
+SELECT e.ename, d.dname
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE e.deptno = (
+    SELECT deptno
+    FROM emp
+    WHERE ename = 'JONES'
+);
+
+
+-- 7. Number of employees in every department including zero
+SELECT d.dname, COUNT(e.empno) AS employee_count
+FROM dept d
+LEFT JOIN emp e
+ON d.deptno = e.deptno
+GROUP BY d.dname;
+
+
+-- 8. Employees whose manager is a MANAGER
+SELECT e.ename AS employee_name,
+       e.job,
+       m.ename AS manager_name,
+       m.job AS manager_job
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE m.job = 'MANAGER';
+
+
+-- 9. Highest-paid employee in each department
+SELECT e.ename, e.sal, d.dname, d.loc
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT deptno, MAX(sal) max_sal
+    FROM emp
+    GROUP BY deptno
+) x
+ON e.deptno = x.deptno
+AND e.sal = x.max_sal;
+
+
+-- 10. Employees reporting to the same manager as ALLEN
+SELECT e.ename AS employee_name,
+       m.ename AS manager_name
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.mgr = (
+    SELECT mgr
+    FROM emp
+    WHERE ename = 'ALLEN'
+);
+
+
+-- 11. Salary greater than at least one employee in RESEARCH
+SELECT e.ename, e.sal, d.dname
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE e.sal > ANY (
+    SELECT e2.sal
+    FROM emp e2
+    JOIN dept d2
+    ON e2.deptno = d2.deptno
+    WHERE d2.dname = 'RESEARCH'
+);
+
+
+-- 12. Employee and manager working in different departments
+SELECT e.ename AS employee_name,
+       e.deptno AS employee_deptno,
+       m.ename AS manager_name,
+       m.deptno AS manager_deptno
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.deptno <> m.deptno;
+
+
+-- 13. Departments without employees
+SELECT d.dname
+FROM dept d
+LEFT JOIN emp e
+ON d.deptno = e.deptno
+WHERE e.empno IS NULL;
+
+
+-- 14. Employee salary exactly 1000 less than manager salary
+SELECT e.ename AS employee_name,
+       e.sal AS employee_salary,
+       m.ename AS manager_name,
+       m.sal AS manager_salary
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.sal = m.sal - 1000;
+
+
+-- 15. Employees working in NEW YORK or DALLAS
+SELECT e.ename, e.job, e.sal, d.dname, d.loc
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE d.loc IN ('NEW YORK', 'DALLAS');
+
+
+-- 16. Two employees in the same department
+-- No duplicate or reverse pairs
+SELECT e1.ename AS employee1,
+       e2.ename AS employee2
+FROM emp e1
+JOIN emp e2
+ON e1.deptno = e2.deptno
+AND e1.empno < e2.empno;
+
+
+-- 17. All employees including employees without a department
+SELECT e.ename, d.dname
+FROM emp e
+LEFT JOIN dept d
+ON e.deptno = d.deptno;
+
+
+-- 18. Employees earning more than 2000 with manager details
+SELECT e.ename AS employee_name,
+       e.sal AS salary,
+       d.dname AS department_name,
+       m.ename AS manager_name
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+LEFT JOIN emp m
+ON e.mgr = m.empno
+WHERE e.sal > 2000;
+
+
+-- 19. Employees earning less than manager but more than 1000
+SELECT e.ename AS employee_name,
+       e.sal AS salary,
+       m.ename AS manager_name,
+       m.sal AS manager_salary
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.sal < m.sal
+AND e.sal > 1000;
+
+
+-- 20. Employees whose manager works in the same department
+SELECT e.ename AS employee_name,
+       e.sal AS employee_salary,
+       m.ename AS manager_name,
+       m.sal AS manager_salary,
+       d.dname AS department_name
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE e.deptno = m.deptno;
+
+
+-- 21. Employees having maximum salary in their department
+SELECT e.ename, e.sal, d.dname
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT deptno, MAX(sal) max_sal
+    FROM emp
+    GROUP BY deptno
+) x
+ON e.deptno = x.deptno
+AND e.sal = x.max_sal;
+
+
+-- 22. Employees whose manager has the same job
+SELECT e.ename AS employee_name,
+       m.ename AS manager_name
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.job = m.job;
+
+
+-- 23. All departments even when no employee earns more than 3000
+SELECT d.dname,
+       e.ename,
+       e.sal
+FROM dept d
+LEFT JOIN emp e
+ON d.deptno = e.deptno
+AND e.sal > 3000;
+
+
+-- 24. Employees earning more than department average
+-- and department located in DALLAS
+SELECT e.ename, e.sal, d.dname, d.loc
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT deptno, AVG(sal) avg_sal
+    FROM emp
+    GROUP BY deptno
+) a
+ON e.deptno = a.deptno
+WHERE e.sal > a.avg_sal
+AND d.loc = 'DALLAS';
+
+
+-- 25. Manager earns more than 2500 and is in same department
+SELECT e.ename AS employee_name,
+       m.ename AS manager_name,
+       d.dname AS department_name
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE m.sal > 2500
+AND e.deptno = m.deptno;
+
+
+-- 26. Employee earns more than manager but less than KING
+SELECT e.ename AS employee_name,
+       e.sal AS employee_salary,
+       m.ename AS manager_name,
+       m.sal AS manager_salary
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+WHERE e.sal > m.sal
+AND e.sal < (
+    SELECT sal
+    FROM emp
+    WHERE ename = 'KING'
+);
+
+
+-- 27. Employees working in departments having more than 3 employees
+SELECT e.ename,
+       d.dname,
+       d.loc
+FROM emp e
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT deptno
+    FROM emp
+    GROUP BY deptno
+    HAVING COUNT(*) > 3
+) x
+ON e.deptno = x.deptno;
+
+
+-- 28. Employees whose manager manages at least two employees
+SELECT e.ename AS employee_name,
+       m.ename AS manager_name,
+       d.dname AS department_name
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT mgr
+    FROM emp
+    WHERE mgr IS NOT NULL
+    GROUP BY mgr
+    HAVING COUNT(*) >= 2
+) x
+ON m.empno = x.mgr;
+
+
+-- 29. Employee salary greater than manager salary
+-- and department located in DALLAS or CHICAGO
+SELECT e.ename AS employee_name,
+       e.job,
+       e.sal,
+       m.ename AS manager_name,
+       m.sal AS manager_salary,
+       d.dname AS department_name,
+       d.loc AS department_location
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+JOIN dept d
+ON e.deptno = d.deptno
+WHERE e.sal > m.sal
+AND d.loc IN ('DALLAS', 'CHICAGO');
+
+
+-- 30. 💀 Employee earns more than manager,
+-- manager works in same department,
+-- employee earns more than department average
+SELECT e.ename AS employee_name,
+       e.sal AS employee_salary,
+       m.ename AS manager_name,
+       m.sal AS manager_salary,
+       d.dname AS department_name,
+       d.loc AS department_location
+FROM emp e
+JOIN emp m
+ON e.mgr = m.empno
+JOIN dept d
+ON e.deptno = d.deptno
+JOIN (
+    SELECT deptno, AVG(sal) avg_sal
+    FROM emp
+    GROUP BY deptno
+) a
+ON e.deptno = a.deptno
+WHERE e.sal > m.sal
+AND e.deptno = m.deptno
+AND e.sal > a.avg_sal;
