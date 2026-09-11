@@ -1,0 +1,30 @@
+1. WAQTD Employee Name, Job, Salary, Department Name and Department Location for employees who are working in the SALES department and earning more than 1500.
+2. WAQTD Employee Name and Manager Name for all employees who have a manager.
+3. WAQTD Department Name and Employee Name for all departments, including departments that do not have any employees.
+4. WAQTD Employee Name, Employee Salary, Manager Name and Manager Salary for employees who earn more than their manager.
+5. WAQTD Employee Name, Salary and Department Name for employees who earn more than the average salary of their department.
+6. WAQTD Employee Name and Department Name for employees working in the same department as JONES.
+7. WAQTD Department Name and Number of Employees for every department, including departments having zero employees.
+8. WAQTD Employee Name, Job, Manager Name and Manager Job for employees whose manager is a MANAGER.
+9. WAQTD Employee Name, Salary, Department Name and Location for the highest-paid employee in each department.
+10. WAQTD Employee Name and Manager Name for employees who report to the same manager as ALLEN.
+11. WAQTD Employee Name, Salary and Department Name for employees whose salary is greater than the salary of at least one employee working in the RESEARCH department.
+12. WAQTD Employee Name, Employee Department Number, Manager Name and Manager Department Number for employees whose manager works in a different department.
+13. WAQTD Department Name for departments that do not have any employees.
+14. WAQTD Employee Name, Salary, Manager Name and Manager Salary for employees whose salary is exactly 1000 less than their manager's salary.
+15. WAQTD Employee Name, Job, Salary, Department Name and Location for employees working in departments located in NEW YORK or DALLAS.
+16. WAQTD names of two employees who work in the same department. Do not display duplicate or reverse employee pairs.
+17. WAQTD Employee Name and Department Name for all employees, including employees who are not assigned to any department.
+18. WAQTD Employee Name, Salary, Department Name and Manager Name for employees earning more than 2000 along with their manager details.
+19. WAQTD Employee Name, Salary, Manager Name and Manager Salary for employees who earn less than their manager but more than 1000.
+20. WAQTD Employee Name, Employee Salary, Manager Name, Manager Salary and Department Name for employees whose manager works in the same department.
+21. WAQTD Employee Name, Salary and Department Name for employees having the maximum salary in their respective department.
+22. WAQTD Employee Name and Manager Name for employees whose manager has the same job as the employee.
+23. WAQTD Department Name, Employee Name and Salary for all departments, displaying departments even when no employee earns more than 3000.
+24. WAQTD Employee Name, Salary, Department Name and Department Location for employees whose salary is greater than the average salary of their department and whose department is located in DALLAS.
+25. WAQTD Employee Name, Manager Name and Department Name for employees whose manager earns more than 2500 and belongs to the same department.
+26. WAQTD Employee Name, Employee Salary, Manager Name and Manager Salary for employees whose salary is greater than their manager's salary but less than KING's salary.
+27. WAQTD Employee Name, Department Name and Department Location for employees working in a department that has more than 3 employees.
+28. WAQTD Employee Name, Manager Name and Department Name for employees whose manager manages at least two employees.
+29. WAQTD Employee Name, Job, Salary, Manager Name, Manager Salary, Department Name and Department Location for employees whose salary is greater than their manager's salary and whose department is located in DALLAS or CHICAGO.
+30. 💀 WAQTD Employee Name, Employee Salary, Manager Name, Manager Salary, Department Name and Department Location for employees who earn more than their manager, work in the same department as their manager, and earn more than the average salary of their department.
