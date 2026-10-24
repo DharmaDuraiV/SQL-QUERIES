@@ -1,0 +1,30 @@
+1. WAQTD employee name, employee salary, manager name, and employee department name if the employee works as 'CLERK'.
+2. WAQTD employee name, manager name, manager salary, and manager department name if the manager works in 'DALLAS'.
+3. WAQTD employee name, employee job, employee location, and manager name if the employee earns more than 2000.
+4. WAQTD employee name, manager name, employee department name, and employee location if the manager works as 'PRESIDENT'.
+5. WAQTD employee name, employee salary, manager name, and manager location if the employee earns more than their manager.
+6. WAQTD employee name, manager name, employee department name, and manager department name if both work in the same department.
+7. WAQTD employee name, employee salary, manager name, and employee location if the employee works in 'SALES' and earns more than 1500.
+8. WAQTD employee name, manager name, manager job, and manager location if the employee works as 'ANALYST'.
+9. WAQTD employee name, manager name, employee department name, and manager salary if the manager earns more than 3000.
+10. WAQTD employee name, employee job, manager name, and department location if the employee and manager work in different departments.
+11. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department name if the employee earns more than the manager.
+12. WAQTD employee name, manager name, employee location, and manager location if the employee and manager work in different locations.
+13. WAQTD employee name, employee job, manager name, manager job, employee department name, and manager department name if both work in the same department.
+14. WAQTD employee name, employee salary, manager name, manager salary, employee location, and manager location if the employee earns less than 2000 and the manager earns more than 2500.
+15. WAQTD employee name, manager name, employee department name, and manager department location if the manager works in 'NEW YORK'.
+16. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department location if both employee and manager earn more than 2000.
+17. WAQTD employee name, manager name, employee department location, and manager department name if the employee works in 'CHICAGO'.
+18. WAQTD employee name, employee hire date, manager name, manager hire date, employee department name, and manager department name if the employee was hired before the manager.
+19. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department name if both work in different departments and the employee earns more than 1500.
+20. WAQTD employee name, employee job, manager name, manager job, employee location, and manager location if the employee works as 'CLERK' and the manager works in 'DALLAS'.
+21. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department location if the employee earns more than the average salary of their department.
+22. WAQTD employee name, employee job, manager name, manager job, employee department name, and manager department location if the manager earns the highest salary in their department.
+23. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department name if the employee earns more than 2500 and the manager earns less than the employee.
+24. WAQTD employee name, manager name, employee department location, and manager department location if both departments are located in different cities and the employee works as 'MANAGER'.
+25. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department location if the employee earns more than the highest-paid employee in department 30.
+26. WAQTD employee name, manager name, employee department name, and manager department name if the employee's department is located in 'DALLAS' and the manager's department is located in 'NEW YORK'.
+27. WAQTD employee name, employee salary, manager name, manager salary, employee department location, and manager department location if the employee and manager earn the same salary.
+28. WAQTD employee name, employee job, manager name, manager job, employee department name, and manager department name if the employee's job is different from the manager's job and both work in the same location.
+29. WAQTD employee name, employee salary, manager name, manager salary, employee department name, and manager department location if the employee earns more than the average salary of the manager's department.
+30. WAQTD employee name, employee salary, manager name, manager salary, employee department name, manager department name, employee location, and manager location if the employee earns more than the manager, the employee's department is located in 'DALLAS', and the manager's department is located in 'CHICAGO'.
