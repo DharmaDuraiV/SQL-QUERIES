@@ -1,0 +1,72 @@
+In Oracle, **ON DELETE CASCADE is supported, but ON UPDATE CASCADE is not supported.**
+
+1. ON DELETE CASCADE in Oracle
+
+When you delete a parent table record, the corresponding child table records are automatically deleted.
+
+Example:
+
+Parent table: DEPT
+Child table: EMP
+
+Syntax:
+
+ALTER TABLE EMP
+ADD CONSTRAINT EMP_DEPTNO_FK
+FOREIGN KEY (DEPTNO)
+REFERENCES DEPT (DEPTNO)
+ON DELETE CASCADE;
+
+Example:
+
+DELETE FROM DEPT
+WHERE DEPTNO = 10;
+
+Result:
+- The department with DEPTNO = 10 is deleted from DEPT.
+- All employees belonging to department 10 are automatically deleted from EMP.
+
+
+CREATE TABLE EMP 
+ (
+    EMPNO NUMBER(4),
+    ENAME VARCHAR2(10),
+    DEPTNO NUMBER(2),
+    CONSTRAINT PK_EMP PRIMARY KEY (EMPNO),
+    CONSTRAINT EMP_DEPTNO_FK
+        FOREIGN KEY (DEPTNO)
+        REFERENCES DEPT (DEPTNO)
+        ON DELETE CASCADE
+  );
+
+
+
+2. ON UPDATE CASCADE in Oracle
+
+Oracle does NOT support ON UPDATE CASCADE in foreign key constraints.
+
+The following syntax is invalid in Oracle:
+
+ALTER TABLE EMP
+ADD CONSTRAINT EMP_DEPTNO_FK
+FOREIGN KEY (DEPTNO)
+REFERENCES DEPT (DEPTNO)
+ON UPDATE CASCADE;
+
+If you need to change a referenced department number, you must handle it another way.
+
+For example, if DEPTNO 10 needs to become 20, you can update the child table first and then the parent table, provided the constraints and other dependencies allow it:
+
+UPDATE EMP
+SET DEPTNO = 20
+WHERE DEPTNO = 10;
+
+UPDATE DEPT
+SET DEPTNO = 20
+WHERE DEPTNO = 10;
+
+However, this approach requires DEPTNO 20 to exist in DEPT before updating EMP, so you must plan the operation carefully. If DEPTNO is a primary key, a temporary strategy or a different schema design may be needed.
+
+**Interview point:**
+- ON DELETE CASCADE — Supported in Oracle.
+- ON UPDATE CASCADE — Not supported in Oracle.

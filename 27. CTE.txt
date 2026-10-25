@@ -1,0 +1,193 @@
+CTE (Common Table Expression) in Oracle SQL
+
+What is CTE?
+
+  * CTE stands for Common Table Expression.
+  * A CTE is defined using the WITH clause.
+  * A CTE exists only for the duration of its SQL statement.
+  * A CTE is not a permanent table.
+  * You can use CTEs with SELECT, INSERT, UPDATE, and DELETE statements where supported by the SQL syntax.
+  * CTEs improve query readability and organization.
+  * Oracle also supports recursive subquery factoring using the WITH clause, with Oracle-specific syntax.
+
+There are two commonly discussed types of CTE:
+
+      * Non-Recursive CTE
+      * Recursive CTE
+
+1. Non-Recursive CTE
+
+Definition:
+
+A Non-Recursive CTE is a Common Table Expression 
+It does not refer to itself.
+It is used to simplify complex SQL queries by defining a named result set using the WITH clause.
+
+2. Syntax
+
+WITH cte_name AS (
+    SELECT column1, column2
+    FROM table_name
+    WHERE condition
+)
+SELECT column1, column2
+FROM cte_name;
+
+3. Example Using EMP Table
+
+Question: Display employees whose salary is greater than 2000 using a CTE.
+
+WITH HIGH_SALARY_EMP AS (
+    SELECT EMPNO, ENAME, SAL
+    FROM EMP
+    WHERE SAL > 2000
+)
+SELECT EMPNO, ENAME, SAL
+FROM HIGH_SALARY_EMP;
+
+Output:
+
+EMPNO    ENAME     SAL
+7839     KING      5000
+7788     SCOTT     3000
+7902     FORD      3000
+7566     JONES     2975
+7698     BLAKE     2850
+7782     CLARK     2450
+
+Note: The output assumes the standard Oracle SCOTT.EMP sample data.
+
+4. How Does CTE Work?
+
+Step 1: WITH defines the CTE.
+Step 2: HIGH_SALARY_EMP is the CTE name.
+Step 3: The inner SELECT retrieves employees earning more than 2000.
+Step 4: The outer SELECT retrieves the result from the CTE.
+
+5. CTE with GROUP BY
+
+Question: Display the department-wise average salary using a CTE.
+
+WITH DEPT_AVG_SAL AS (
+    SELECT DEPTNO, AVG(SAL) AS AVG_SALARY
+    FROM EMP
+    GROUP BY DEPTNO
+)
+SELECT DEPTNO, AVG_SALARY
+FROM DEPT_AVG_SAL;
+
+6. CTE with JOIN
+
+Question: Display employee names and their department names using a CTE.
+
+WITH EMP_DEPT AS (
+    SELECT E.EMPNO, E.ENAME, E.DEPTNO, D.DNAME
+    FROM EMP E
+    JOIN DEPT D
+    ON E.DEPTNO = D.DEPTNO
+)
+SELECT EMPNO, ENAME, DNAME
+FROM EMP_DEPT;
+
+---------------------------
+
+NON-RECURSIVE CTE WITH DML IN ORACLE SQL
+
+1. CTE WITH INSERT
+
+Example: Insert employees whose salary is greater than 3000 into the EMP_BACKUP table.
+
+INSERT INTO EMP_BACKUP (EMPNO, ENAME)
+WITH HIGH_SALARY_EMP AS (
+    SELECT EMPNO, ENAME
+    FROM EMP
+    WHERE SAL > 3000
+)
+SELECT EMPNO, ENAME
+FROM HIGH_SALARY_EMP;
+
+
+2. CTE WITH UPDATE
+
+Example: Increase the salary of employees earning less than 2000 by 10%.
+
+UPDATE EMP
+SET SAL = SAL * 1.10
+WHERE EMPNO IN (
+    WITH LOW_SALARY_EMP AS (
+        SELECT EMPNO
+        FROM EMP
+        WHERE SAL < 2000
+    )
+    SELECT EMPNO
+    FROM LOW_SALARY_EMP
+);
+
+
+3. CTE WITH DELETE
+
+Example: Delete employees whose salary is less than 1000.
+
+DELETE FROM EMP
+WHERE EMPNO IN (
+    WITH LOW_SALARY_EMP AS (
+        SELECT EMPNO
+        FROM EMP
+        WHERE SAL < 1000
+    )
+    SELECT EMPNO
+    FROM LOW_SALARY_EMP
+);
+
+
+*******************************************************************
+
+
+A Recursive
+----------
+
+Definition:
+  * A Recursive CTE is a Common Table Expression that refers to its own result. It is used to process hierarchical data or repeatedly build results until no more rows satisfy the recursive condition.
+  * A Recursive CTE generally contains two parts:
+  * Anchor Member: Retrieves the initial result.
+  * Recursive Member: Retrieves additional results by referring to the CTE.
+
+In Oracle SQL, recursive subquery factoring uses the WITH clause and UNION ALL. Unlike some other databases, Oracle does not use the WITH RECURSIVE keyword.
+
+Syntax:
+
+WITH cte_name (column1, column2, level_no) AS (
+SELECT column1, column2, 1
+FROM table_name
+WHERE starting_condition
+
+UNION ALL
+
+SELECT t.column1, t.column2, c.level_no + 1
+FROM table_name t
+JOIN cte_name c
+ON t.parent_id = c.column1
+
+)
+SELECT column1, column2, level_no
+FROM cte_name;
+
+Example:
+
+Question: Display the employee hierarchy starting from the top-level employee.
+
+WITH EMP_HIERARCHY (EMPNO, ENAME, MGR, LEVEL_NO) AS (
+SELECT EMPNO, ENAME, MGR, 1
+FROM EMP
+WHERE MGR IS NULL
+
+UNION ALL
+
+SELECT E.EMPNO, E.ENAME, E.MGR, H.LEVEL_NO + 1
+FROM EMP E
+JOIN EMP_HIERARCHY H
+ON E.MGR = H.EMPNO
+
+)
+SELECT EMPNO, ENAME, MGR, LEVEL_NO
+FROM EMP_HIERARCHY;

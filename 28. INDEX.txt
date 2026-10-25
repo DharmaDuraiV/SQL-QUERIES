@@ -1,0 +1,238 @@
+What is an Index? 
+
+   🔹Index is a database object that improves query performance by providing quick access to rows in a table.
+   🔹 It allows faster retrieval of data, especially for large tables.
+   🔹 It works similarly to an index in a book, helping you quickly locate specific rows.
+   🔹 Indexes are automatically created on primary key and unique key columns.
+
+
+Advantages of Indexes:
+---------------------------
+    🔹 Faster Query Performance: Speeds up data retrieval, especially for SELECT queries with WHERE clauses.
+    🔹 Can be unique or non-unique.
+
+Types of Index :
+   🔹Clustered Index
+   🔹Non-Clustered Index
+   
+----------------------------------------------------------------------------------
+Non-Clustered Index:
+    🔹 A non-clustered index is an index structure that is stored separately from the table data.
+    🔹 It contains index keys + ROWID pointers to the actual rows in the table.
+    🔹 When a query uses the index, Oracle first looks up the ROWID in the index → then retrieves the actual row from the table.
+    🔹In Oracle, every normal index you create with CREATE INDEX is non-clustered by default.
+
+     Types of Index 
+           1. Single-Column Index
+           2. Composite (Multi-Column) Index
+           3. Unique Index
+           4. Function-Based Index
+           5. Reverse Index (Reverse Key Index)
+           6. Bitmap Index
+------------------------------------------------------------------------
+
+1️⃣ Single-column Index:
+************************
+🔹 Built on one column.
+🔹 Allows duplicate values.
+🔹 Used to improve performance of queries (WHERE conditions).
+
+Syntax:
+
+     CREATE INDEX index_name
+     ON table_name (column_name);
+
+Examples 
+---------
+
+     CREATE INDEX index_sal
+     ON emp (sal);
+
+****************************************************************************************************************************
+
+2️⃣ Composite Index (on multiple columns):
+----------------------------------------------
+
+   🔹 Built on multiple columns.
+   🔹 Order of columns matters in query optimization.
+
+Syntax :
+
+     CREATE INDEX index_name
+     ON table_name (column_name1, column_name2);
+
+Examples 
+--------
+
+     CREATE INDEX ind_name_dno
+     ON emp (ename, deptno);
+
+****************************************************************************************************************************
+
+3️⃣ Unique Index:
+--------------------
+
+🔹 Ensures no duplicate values in the column(s).
+🔹 Usually created automatically when you define a PRIMARY KEY or UNIQUE constraint.
+
+Syntax:
+
+     CREATE UNIQUE INDEX index_name
+     ON table_name (column_name);
+
+Examples
+---------
+
+    CREATE TABLE CUST 
+    (
+    CID NUMBER(4) ;
+    CNAME VARCHAR(20) ,
+    ADDRESS VARCHAR(50) 
+   ) ;
+
+     CREATE UNIQUE INDEX IND_CUST_CID
+     ON CUST (CID) ;
+
+   INSERT INTO CUST VALUES (1 ,'A' ,'BANGALORE');
+   INSERT INTO CUST VALUES (2 , 'B' ,'CHENNAI' );
+   INSERT INTO CUST VALUES (1, 'C' ,'MANDYA' );
+
+****************************************************************************************************************************
+4️⃣ Function-Based Index
+   ----------------------
+
+  🔹 Index created on an expression or function of a column.
+  🔹 Useful when queries use functions on columns.
+
+Syntax :
+
+   CREATE INDEX Index_name
+   ON Table_Name(SRF(COL_NAME)/EXPRESSION);
+
+EXAMPLE :
+
+   CREATE INDEX idx_upper_name
+   ON emp(UPPER(ename));
+
+OR 
+
+   CREATE INDEX idx_Annual_salary
+   ON emp(sal*12);
+
+****************************************************************************************************************************
+5️⃣ Reverse Index (Reverse Key Index)
+
+   🔹 Stores index key values in reverse byte order.
+   🔹 Helps avoid block contention when inserting sequential values (like from a sequence).
+
+Syntax:
+
+   CREATE INDEX index_name
+   ON table_name(column_name) REVERSE;
+
+
+Example:
+
+   CREATE INDEX idx_emp_rev
+   ON emp(empno) REVERSE;
+
+****************************************************************************************************************************
+
+6️⃣ Bitmap Index
+
+  🔹 Stores rowids as bitmaps (0/1).
+  🔹 Very efficient for low-cardinality columns (few distinct values, e.g., Gender, Status).
+
+Syntax:
+
+   CREATE BITMAP INDEX index_name
+   ON table_name(column_name);
+
+Example:
+
+   CREATE BITMAP INDEX idx_emp_gender
+   ON employees(gender);
+
+****************************************************************************************************************************
+Cluster :- 
+
+   * A Cluster is a Database object that allows storing data from two or more tables together in the same data block based on common column(s).
+   * Improves performance of queries that join related tables frequently.
+   * Reduces I/O operations by keeping related rows physically close.
+   * Efficient storage for related rows.
+
+Step 1: Create the Cluster (define cluster key)
+-----------------------------------------------
+
+CREATE CLUSTER emp_dept_cluster (
+  deptno NUMBER(2)
+);
+
+Step 2: Create Cluster Index (required for INDEX cluster)
+-----------------------------------------------
+
+CREATE INDEX idx_emp_dept_cluster
+ON CLUSTER emp_dept_cluster;
+
+Step 3: Create Tables inside the Cluster
+-----------------------------------------------
+
+-- Dept table inside cluster
+CREATE TABLE dept44 (
+  deptno NUMBER(2) PRIMARY KEY,
+  dname  VARCHAR2(14),
+  loc    VARCHAR2(13)
+) CLUSTER emp_dept_cluster (deptno);
+
+-- Emp table inside cluster with foreign key
+CREATE TABLE emp44 (
+  empno  NUMBER(4) PRIMARY KEY,
+  ename  VARCHAR2(10),
+  job    VARCHAR2(9),
+  deptno NUMBER(2) NOT NULL,
+  CONSTRAINT fk_emp_dept FOREIGN KEY (deptno) 
+     REFERENCES dept44(deptno)
+) CLUSTER emp_dept_cluster (deptno);
+
+Step 4: Insert Sample Data
+-----------------------------------------------
+
+INSERT INTO dept44 VALUES (10, 'ACCOUNTING', 'NEW YORK');
+INSERT INTO dept44 VALUES (20, 'RESEARCH',   'DALLAS');
+
+INSERT INTO emp44 VALUES (7369, 'SMITH',  'CLERK',   20);
+INSERT INTO emp44 VALUES (7499, 'ALLEN',  'SALESMAN',10);
+INSERT INTO emp44 VALUES (7521, 'WARD',   'SALESMAN',10);
+INSERT INTO emp44 VALUES (7566, 'JONES',  'MANAGER', 20);
+COMMIT;
+
+Step 5: Query (joins benefit from clustering)
+-----------------------------------------------
+
+SELECT *
+FROM   emp e
+JOIN   dept d ON d.deptno = e.deptno
+ORDER BY d.deptno, e.empno;
+
+Step 6: Drop Objects
+-----------------------------------------------
+DROP TABLE emp PURGE;
+DROP TABLE dept PURGE;
+DROP INDEX idx_emp_dept_cluster;
+DROP CLUSTER emp_dept_cluster INCLUDING TABLES;
+
+
+***********************************************************************************
+ 
+
+| **Aspect**         | **Clustered Index (via Cluster in Oracle)**                                                        | **Non-Clustered Index (Default in Oracle)**                        |
+| ------------------ | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| **Definition**     | Rows of related tables stored **together** in the same data block based on a cluster key.          | Separate index structure with **ROWIDs** pointing to table rows.   |
+| **Storage**        | Data + index stored **together**.                                                                  | Data stored separately, index contains only **ROWID pointers**.    |
+| **Number Allowed** | Only **one cluster index** per cluster.                                                            | A table can have **multiple non-clustered indexes**.               |
+| **Best For**       | Queries with **frequent joins** on cluster key (e.g., `EMP.DEPTNO = DEPT.DEPTNO`).                 | Queries with **WHERE, ORDER BY, functions, filtering**.            |
+| **Performance**    | Speeds up **joins**, but DML (INSERT/UPDATE/DELETE) can be slower.                                 | Speeds up **search/filtering**; DML overhead is less than cluster. |
+| **Example Syntax** |   CREATE CLUSTER emp_dept_cluster(deptno NUMBER(2));                                               | CREATE INDEX idx_emp_ename 
+                     |   CREATE INDEX idx_emp_dept_cluster                                                                |  ON emp44(ename);
+                     |   ON CLUSTER emp_dept_cluster;                                                                     |
+| **Flexibility**    | Rigid: all tables in cluster must share same key column.                                           | Flexible: can be created on any column(s).                         |

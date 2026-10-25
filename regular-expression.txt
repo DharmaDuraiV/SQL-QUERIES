@@ -1,0 +1,162 @@
+REGULAR EXPRESSION IN SQL (ORACLE)
+
+Definition:
+A Regular Expression is a sequence of characters used to search, match, and validate patterns in character data.
+
+COMMON REGULAR EXPRESSION SYMBOLS IN ORACLE SQL
+
+| Symbol | Meaning |
+|---|---|
+| `^` | Matches the beginning of a string |
+| `$` | Matches the end of a string |
+| `.` | Matches any single character |
+| `*` | Matches zero or more occurrences |
+| `+` | Matches one or more occurrences |
+| `?` | Matches zero or one occurrence |
+| `[ABC]` | Matches any one of the specified characters |
+| `[A-Z]` | Matches any uppercase English letter |
+| `[a-z]` | Matches any lowercase English letter |
+| `[0-9]` | Matches any digit from 0 to 9 |
+| `{n}` | Matches exactly n occurrences |
+| `{n,m}` | Matches from n to m occurrences |
+| `|` | Represents OR |
+| `()` | Groups expressions |
+
+
+Oracle SQL provides the following regular expression functions:
+
+1. REGEXP_LIKE
+2. REGEXP_INSTR
+3. REGEXP_SUBSTR
+4. REGEXP_REPLACE
+5. REGEXP_COUNT
+
+1. REGEXP_LIKE
+
+Definition:
+Used to check whether a string matches a specified pattern. It is commonly used in the WHERE clause.
+
+Syntax:
+REGEXP_LIKE(column_name, pattern [, match_parameter])
+
+
+third parameter :
+
+| Parameter | Meaning |
+|---|---|
+| `'i'` | Case-insensitive matching |
+| `'c'` | Case-sensitive matching |
+| `'n'` | Allows `.` to match newline characters |
+| `'m'` | Treats the source as multiple lines; `^` and `$` match line boundaries |
+| `'x'` | Ignores whitespace in the pattern, except within character classes |
+
+-- 1. Display employee names starting with A
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^A');
+
+-- 2. Display employee names ending with S
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, 'S$');
+
+-- 3. Display employee names containing LL
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, 'LL');
+
+-- 4. Display employee names containing only uppercase letters
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^[A-Z]+$');
+
+-- 5. Display employee names containing only lowercase letters
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^[a-z]+$');
+
+-- 6. Display employee names containing exactly 5 characters
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^.{5}$');
+
+-- 7. Display employee names starting with A or S
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^[AS]');
+
+-- 8. Display employee names containing at least one digit
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '[0-9]');
+
+-- 9. Display employee names containing only letters
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^[A-Za-z]+$');
+
+-- 10. Display employee names starting with S, ignoring case
+SELECT ename
+FROM emp
+WHERE REGEXP_LIKE(ename, '^S', 'i');
+
+2. REGEXP_INSTR
+
+Definition:
+Used to find the position of a matching pattern in a string.
+
+Syntax:
+REGEXP_INSTR(
+    source_string,
+    pattern
+    [, start_position
+    [, occurrence
+    [, return_option
+    [, match_parameter]]]]
+)
+
+3. REGEXP_SUBSTR
+
+Definition:
+Used to extract a substring that matches a specified pattern.
+
+Syntax:
+REGEXP_SUBSTR(
+    source_string,
+    pattern
+    [, start_position
+    [, occurrence
+    [, match_parameter
+    [, subexpression]]]]
+)
+
+4. REGEXP_REPLACE
+
+Definition:
+Used to replace text that matches a specified pattern.
+
+Syntax:
+REGEXP_REPLACE(
+    source_string,
+    pattern
+    [, replacement_string
+    [, start_position
+    [, occurrence
+    [, match_parameter]]]]
+)
+
+5. REGEXP_COUNT
+
+Definition:
+Used to count the number of occurrences of a pattern in a string.
+
+Syntax:
+REGEXP_COUNT(
+    source_string,
+    pattern
+    [, start_position
+    [, match_parameter]]
+)
+
+
+
