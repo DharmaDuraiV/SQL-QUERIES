@@ -1,309 +1,137 @@
 What is a VIEW?
 
-- A VIEW is a virtual table
-- Created using a SELECT query
-- Stores only the query, not the data (except materialized view)
+  * A VIEW is a virtual table created using a SQL query. 
+  * It retrieves data from one or more underlying tables.
+  * A normal view stores the SQL query definition, not a separate copy of the underlying table data.
 
-One line:
-View = Stored Query
+WHY DO WE USE VIEWS?
 
---------------------------------------------------
+1. Security - Restrict access to specific columns or rows.
+2. Simplicity - Simplify complex SQL queries.
+3. Reusability - Reuse queries without rewriting them.
+4. Data abstraction - Hide the complexity of underlying tables.
+5. Customized presentation - Display specific data to different users.
 
-Syntax (Normal View)
+   TYPES OF VIEWS
+      * NON MATERIALIZED VIEW
+      * MATERIALIZED VIEW
+
+ NON MATERIALIZED VIEW
+ ----------------------
+    * A non-materialized view is a virtual table created using a SQL query.
+    * It stores the query definition, not a separate copy of the query results.
+         1) SIMPLE VIEW
+         2) COMPLEX VIEW
+
+A. SIMPLE VIEW
+
+A simple view is based on a single table and does not contain group functions or grouping.
+
+Example:
+
+CREATE VIEW EMP_SIMPLE_VIEW AS
+SELECT EMPNO, ENAME, SAL
+FROM EMP;
+
+Features:
+1. Based on one table.
+2. Does not contain GROUP BY or aggregate functions.
+3. May support INSERT, UPDATE and DELETE, subject to Oracle's updatability rules.
+
+SYNTAX TO CREATE A VIEW
+------------------------
 
 CREATE VIEW view_name AS
 SELECT column1, column2
 FROM table_name;
 
---------------------------------------------------
+Example:
 
-Example
+CREATE VIEW EMP_VIEW AS
+SELECT EMPNO, ENAME, SAL
+FROM EMP;
 
-CREATE VIEW emp_view AS
-SELECT ename, sal
-FROM emp;
+HOW TO RETRIEVE DATA FROM A VIEW
 
---------------------------------------------------
+SELECT EMPNO, ENAME, SAL
+FROM EMP_VIEW;
 
-DROP VIEW
+CREATE A VIEW WITH A WHERE CONDITION
 
-DROP VIEW emp_view;
+CREATE VIEW HIGH_SALARY_VIEW AS
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > 2000;
 
---------------------------------------------------
+Retrieve the data:
 
-Uses of View
+SELECT EMPNO, ENAME, SAL
+FROM HIGH_SALARY_VIEW;
 
-- Hide sensitive columns (SAL, COMM)
-- Reuse queries
-- Simplify complex SQL
-- Provide custom data
+B. COMPLEX VIEW
+----------------
 
---------------------------------------------------
+A complex view involves multiple tables or more complex query operations, such as joins, group functions or GROUP BY.
 
-Types of Views
+Example:
 
---------------------------------------------------
+CREATE VIEW DEPT_SALARY_VIEW AS
+SELECT DEPTNO, SUM(SAL) AS TOTAL_SALARY
+FROM EMP
+GROUP BY DEPTNO;
 
-1) Non-Materialized View (Normal View)
+Features:
+1. May involve multiple tables.
+2. May contain joins or aggregate functions.
+3. Often does not support direct INSERT, UPDATE or DELETE operations.
 
-Definition
 
-- Does NOT store data
-- Data comes from base table every time
 
-Key Points
-
-- No physical storage
-- Always shows latest data
-- Slower for large queries
-- No extra space needed
-
-Syntax
-
-CREATE VIEW view_name AS
-SELECT * FROM table_name;
-
-Example
-
-CREATE VIEW emp_view AS
-SELECT ename, deptno
-FROM emp;
-
-Working
-
-SELECT * FROM emp_view
--> internally executes -> SELECT * FROM emp
-
---------------------------------------------------
-
-DML Operations (IMPORTANT)
-
-Allowed
-
-- INSERT
-- UPDATE
-- DELETE
-
-Only if:
-
-- View is based on single table
-- No JOIN
-- No GROUP BY
-- No DISTINCT
-- No aggregate functions
-
-Not Allowed
-
-- If view contains:
-  - JOIN
-  - GROUP BY
-  - DISTINCT
-  - Functions
-
---------------------------------------------------
-
-Advantages
-
-- Always updated data
-- No storage required
-- Simple to use
-
-Disadvantages
-
-- Slower for complex queries
-- Runs query every time
-
---------------------------------------------------
-
-2) Materialized View
+C. MATERIALIZED VIEW – Oracle SQL Notes
+----------------------------------------
 
 Definition
 
-- Stores data physically
-- Acts like a snapshot of table
-
-Key Points
-
-- Data stored in database
-- Faster performance
-- Data may not be latest
-- Requires storage
+  * A MATERIALIZED VIEW is a database object .
+  * Physically stores query results.
+  * Can improve performance for expensive queries.
+  * Useful for reporting and data warehousing.
+  * May need refreshing to reflect changes in the underlying tables.
 
 Syntax
 
 CREATE MATERIALIZED VIEW view_name AS
-SELECT * FROM table_name;
+SELECT column_names
+FROM table_name;
 
-Example
+Example 1: Create a Materialized View
 
-CREATE MATERIALIZED VIEW emp_mat_view
-AS
-SELECT ename, sal FROM emp;
+CREATE MATERIALIZED VIEW EMP_MV AS
+SELECT EMPNO, ENAME, SAL, DEPTNO
+FROM EMP;
 
---------------------------------------------------
+This creates a materialized view named EMP_MV containing the query results.
 
-DROP MATERIALIZED VIEW
+Example 2: Retrieve Data
 
-DROP MATERIALIZED VIEW emp_mat_view;
+SELECT EMPNO, ENAME, SAL, DEPTNO
+FROM EMP_MV;
 
---------------------------------------------------
+The query retrieves data from the stored materialized view results.
 
-DML Operations
+Example 3: Department-Wise Total Salary
 
-Not Allowed
+CREATE MATERIALIZED VIEW DEPT_SALARY_MV AS
+SELECT DEPTNO, SUM(SAL) AS TOTAL_SALARY
+FROM EMP
+GROUP BY DEPTNO;
 
-- INSERT
-- UPDATE
-- DELETE
 
-Materialized view is read-only
+Retrieve the results:
 
---------------------------------------------------
+SELECT DEPTNO, TOTAL_SALARY
+FROM DEPT_SALARY_MV;
 
-PL/SQL REFRESH (Oracle)
+How to Refresh a Materialized View
 
-  * DBMS_MVIEW → Oracle package 
-  * 'C' → Complete (full reload) 
-  * 'F' → Fast (only changes) 
-  * '?' → Force (auto decide) 
-  * / → Executes PL/SQL block in SQL*Plus
-
--- Basic Refresh
-BEGIN
-  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW');
-END;
-/
-
--- Complete Refresh
-BEGIN
-  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW', 'C');
-END;
-/
-
--- Fast Refresh
-BEGIN
-  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW', 'F');
-END;
-/
-
--- Force Refresh
-BEGIN
-  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW', '?');
-END;
-/
-
--- Multiple Views
-BEGIN
-  DBMS_MVIEW.REFRESH('EMP_MAT_VIEW,DEPT_MAT_VIEW');
-END;
-/
-  
-
---------------------------------------------------
-
-Advantages
-
-- Fast query execution
-- Suitable for large data
-- Good for reporting
-
-Disadvantages
-
-- Needs storage
-- Data can become outdated
-
---------------------------------------------------
-
-Difference (WITH DML)
-
-Feature            Normal View            Materialized View
-------------------------------------------------------------
-Data Stored        No                     Yes
-DML Allowed        Yes (conditions)       No
-Performance        Slower                Faster
-Data Freshness     Always latest          May be old
-Space              No                     Yes
-
---------------------------------------------------
-
-Final Revision
-
-- View = Virtual table
-- Normal View = No data stored
-- Materialized View = Data stored physically
-- Normal View = DML possible (with conditions)
-- Materialized View = Read-only (no DML)
-- Use DROP VIEW / DROP MATERIALIZED VIEW to delete
-- Refresh using DBMS_MVIEW in PL/SQL
-
---------------------------------------------------
-
-  CHECK VIEW / MATERIALIZED VIEW EXISTENCE IN ORACLE
-
---------------------------------------------------
-
-1) Check Normal View
-
-SELECT view_name
-FROM user_views
-WHERE view_name = 'EMP_VIEW';
-
---------------------------------------------------
-
-2) Check Materialized View
-
-SELECT mview_name
-FROM user_mviews
-WHERE mview_name = 'EMP_MAT_VIEW';
-
---------------------------------------------------
-
-3) Check in All Schemas (if needed)
-
--- Normal View
-SELECT owner, view_name
-FROM all_views
-WHERE view_name = 'EMP_VIEW';
-
--- Materialized View
-SELECT owner, mview_name
-FROM all_mviews
-WHERE mview_name = 'EMP_MAT_VIEW';
-
---------------------------------------------------
-
-4) Check Structure (Definition)
-
--- Normal View
-SELECT text
-FROM user_views
-WHERE view_name = 'EMP_VIEW';
-
--- Materialized View
-SELECT query
-FROM user_mviews
-WHERE mview_name = 'EMP_MAT_VIEW';
-
---------------------------------------------------
-
-5) Quick Check (Table-like)
-
-SELECT * FROM emp_view;
-SELECT * FROM emp_mat_view;
-
--- If exists → works
--- If not → error
-
---------------------------------------------------
-
-IMPORTANT NOTES
-
-- View names are stored in UPPERCASE in Oracle
-- Always use 'EMP_VIEW' not 'emp_view'
-- user_views → your schema
-- all_views → all accessible schemas
-- dba_views → full database (needs privilege)
-
---------------------------------------------------
-
-  
+EXEC DBMS_MVIEW.REFRESH('EMP_MV');
