@@ -1,0 +1,27 @@
+
+ASSESSMENT QUESTIONS
+
+1. WAQTD employee name and salary of employees who earn more than the average salary of their department.
+2. WAQTD employee name and department number of employees who earn the highest salary in their department.
+3. WAQTD employee name and manager number of employees whose salary is greater than their manager's salary.
+4. WAQTD employee name and job of employees who earn the lowest salary in their department.
+5. WAQTD employee name and hire date of employees who earn more than at least one employee in their department.
+6. WAQTD employee name and commission of employees who earn less than every other employee in their department.
+7. WAQTD employee name and hire date of employees who joined the company before their manager.
+
+
+ASSESSMENT QUESTIONS
+
+1. WAQTD employee name and salary of employees earning the 3rd maximum salary.
+2. WAQTD employee name and hire date of employees earning the 1st minimum and 5th minimum salaries.
+3. WAQTD employee name and job of employees earning the 1st maximum and last maximum salaries.
+4. WAQTD employee name and department number of employees earning the first 4 minimum salaries.
+5. WAQTD employee name and commission of employees earning the 1st, 7th, and 8th maximum salaries.
+6. WAQTD employee name and manager number of employees earning the first 7 maximum salaries.
+7. WAQTD employee name and salary of employees earning the last 3rd minimum salary.
+8. WAQTD employee name and hire date of employees earning the last 5th and 6th maximum salaries.
+9. WAQTD employee name and job of employees earning the last 3rd minimum salary.
+10. WAQTD employee name and department number of employees earning the first maximum and last 3rd maximum salaries.
+11. WAQTD employee name and commission of employees earning the first 3 minimum and last 2 minimum salaries.
+12. WAQTD employee name and manager number of employees earning the 1st, 3rd, and 5th maximum salaries and the last 2nd maximum salary.
+13. WAQTD employee name and hire date of employees earning the last 5th minimum salary.

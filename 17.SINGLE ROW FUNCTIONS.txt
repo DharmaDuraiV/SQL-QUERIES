@@ -206,22 +206,61 @@ SYNTAX:      IFNULL ( ARG1 , ARG2 )
 
 22. CASE() :
 
-	SYNTAX: CASE WHEN condition_1 THEN 'result_1'
+The CASE expression is used to check multiple conditions and return a result based on the first condition that is satisfied. It works like an IF-ELSE statement.
+
+
+	SYNTAX: 
+	
+	  CASE WHEN condition_1 THEN 'result_1'
 		     WHEN condition_2 THEN 'result_2'
-			.
-			.
-			.
+					.
+					.
+					.
 		     WHEN condition_N THEN 'result_N'
 		     [ELSE 'default_result'] 
 		     END
+
+1-WAQTD employee name, salary, and salary grade based on the following conditions:
+Salary >= 5000 → GRADE A
+Salary >= 3000 → GRADE B
+Salary >= 2000 → GRADE C
+Salary < 2000 → GRADE D
+
+2-WAQTD employee name, job, salary, and bonus amount based on the following conditions:
+Job is PRESIDENT → 20% of salary
+Job is MANAGER → 15% of salary
+Job is ANALYST → 10% of salary
+All other employees → 5% of salary
+
+3-WAQTD employee name, department number, salary, and employee category based on the following conditions:
+Department 10 and salary >= 3000 → SENIOR ACCOUNTING EMPLOYEE
+Department 20 and salary >= 2500 → SENIOR RESEARCH EMPLOYEE
+Department 30 → SALES EMPLOYEE
+All other employees → GENERAL EMPLOYEE
+
+4-WAQTD employee name, hire date, and experience category based on the following conditions:
+Experience >= 20 years → HIGHLY EXPERIENCED
+Experience >= 10 years → EXPERIENCED
+Experience >= 5 years → INTERMEDIATE
+Experience < 5 years → FRESHER
+
+5-WAQTD employee name, salary, commission, and compensation category based on the following conditions:
+Salary >= 3000 and commission is not NULL → HIGH COMPENSATION
+Salary >= 3000 and commission is NULL → HIGH SALARY ONLY
+Salary < 3000 and commission is not NULL → COMMISSION BASED
+All other employees → REGULAR COMPENSATION
+
+
+
 
 23. RANK() :
 
 Rank function is used to Assigns a rank to each row.
 If the same rank is avaliableRank function it will creates gap or skips the ranks 
 
-	SYNTAX:  RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
-                               ORDER BY COL_NAME [ASC]/DESC)
+	SYNTAX:  
+	
+	RANK() OVER ( [PARTITION BY COL_NAME/EXP ] ORDER BY COL_NAME [ASC]/DESC)
 
 
 24. DENSE_RANK() :
@@ -230,11 +269,24 @@ Dense_Rank function is used to Assigns a rank to each row.
 If the same rank is available Dense_Rank function it will not creates gaps or skips the ranks
 
 
-SYNTAX: DENSE_RANK() OVER ( [PARTITION BY COL_NAME/EXP ]
-                               ORDER BY COL_NAME [ASC]/DESC)
+SYNTAX: 
+
+DENSE_RANK() OVER ( [PARTITION BY COL_NAME/EXP ] ORDER BY COL_NAME [ASC]/DESC)
 
 
-*******************************************************************************************************************
+1. WAQTD EMPLOYEE NAME, SALARY, DEPARTMENT NAME AND RANK OF EACH EMPLOYEE BASED ON SALARY IN DESCENDING ORDER ACROSS THE COMPANY.
+2. WAQTD EMPLOYEE NAME, SALARY, DEPARTMENT NAME AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH DEPARTMENT. DISPLAY ONLY EMPLOYEES WHOSE RANK IS 2.
+3. WAQTD EMPLOYEE NAME, JOB, SALARY, DEPARTMENT NAME AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH JOB ROLE. DISPLAY THE TOP 2 DISTINCT SALARIES IN EACH JOB.
+4. WAQTD EMPLOYEE NAME, EMPLOYEE SALARY, MANAGER NAME, MANAGER SALARY AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH DEPARTMENT.
+5. WAQTD EMPLOYEE NAME, SALARY, DEPARTMENT NAME AND RANK OF EMPLOYEES EARNING THE TOP 3 DISTINCT SALARIES IN EACH DEPARTMENT. DISPLAY ALL EMPLOYEES WHO SHARE THE SAME SALARY RANK.
+6. WAQTD EMPLOYEE NAME, SALARY, DEPARTMENT NAME AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH LOCATION. DISPLAY EMPLOYEES WHOSE RANK IS 1 OR 2.
+7. WAQTD EMPLOYEE NAME, JOB, SALARY, DEPARTMENT NAME AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH DEPARTMENT. DISPLAY ONLY EMPLOYEES WHOSE SALARY RANK IS 2 OR 3.
+8. WAQTD EMPLOYEE NAME, SALARY, MANAGER NAME, DEPARTMENT NAME AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH MANAGER'S TEAM.
+9. WAQTD EMPLOYEE NAME, SALARY, DEPARTMENT NAME AND RANK OF EMPLOYEES BASED ON SALARY WITHIN EACH DEPARTMENT. DISPLAY EMPLOYEES WHO EARN MORE THAN THE SECOND-HIGHEST DISTINCT SALARY IN THEIR DEPARTMENT.
+10. WAQTD EMPLOYEE NAME, JOB, SALARY AND DEPARTMENT NAME, DISPLAYING ALL EMPLOYEES WHO SHARE THE SAME SALARY POSITION WITHIN THEIR DEPARTMENT, INCLUDING EMPLOYEES WHOSE DEPARTMENT NUMBER IS NULL.
+
+
+******************************************************************************
 
 
 
@@ -263,7 +315,8 @@ SYNTAX:
                   THREE YEARS OF THE LAST EMPLOYEE .
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
 			Single -function - in three Database
 
 Perfect 👍 You want **clean comparison format (Oracle vs MySQL vs PostgreSQL)** — function name + syntax.

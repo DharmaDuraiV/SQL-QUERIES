@@ -1,0 +1,30 @@
+1. WAQTD employee name, employee job, salary, department name, and department location for employees working in the SALES department and earning more than 1500.
+2. WAQTD employee name, employee salary, manager name, and manager salary for employees earning less than their managers and working as CLERK.
+3. WAQTD employee name, employee department name, employee department location, manager name, and manager department location for employees working in DALLAS and earning more than 2000.
+4. WAQTD employee name, job, department name, and hire date for employees working in the SALES department and hired after 1981.
+5. WAQTD employee name, employee department name, manager name, manager job, and manager's manager name for employees working in the RESEARCH department whose manager works as MANAGER.
+6. WAQTD employee name, hire date, manager name, and manager hire date for employees hired before their managers and earning more than 1500.
+7. WAQTD employee name, employee department name, manager name, and manager's manager job for employees working in CHICAGO whose manager's manager works as PRESIDENT.
+8. WAQTD employee name, salary, department name, and department location for employees earning between 1000 and 3000 and working in the ACCOUNTING department.
+9. WAQTD employee name, employee job, manager name, and manager job for employees working as CLERK whose managers work as MANAGER.
+10. WAQTD employee name, employee department name, manager name, manager's manager name, and manager's manager department name for employees working in SALES whose manager's manager works as PRESIDENT.
+11. WAQTD employee name, employee salary, commission, manager name, and manager salary for employees earning less than their managers and receiving commission.
+12. WAQTD employee name, job, department number, and department location for employees working in DALLAS and earning more than 2500.
+13. WAQTD employee name, employee job, manager name, manager department name, and manager's manager name for SALESMAN employees earning more than 1000.
+14. WAQTD employee name, employee department name, manager name, and manager department name for employees and managers working in different departments when the employee was hired after 1981.
+15. WAQTD employee name, employee salary, manager name, manager salary, and manager's manager name for employees working in RESEARCH and earning more than 2000.
+16. WAQTD employee name, employee department name, manager name, and manager job for ANALYST employees whose managers work as MANAGER.
+17. WAQTD employee name, salary, department name, and hire date for employees working in ACCOUNTING and hired before 1982.
+18. WAQTD employee number, employee name, employee job, employee salary, employee department location, manager number, manager name, manager job, manager department name, manager's manager number, manager's manager name, and manager's manager department location for employees earning more than 1000 whose manager works as MANAGER and whose manager's manager works as PRESIDENT.
+19. WAQTD employee name, employee department name, manager name, manager department name, and manager's manager name for SALESMAN employees whose managers belong to the ACCOUNTING department.
+20. WAQTD employee name, employee salary, manager name, manager salary, manager's manager name, and manager's manager department name for ANALYST employees earning more than 2000 whose managers belong to the RESEARCH department.
+21. WAQTD employee name, salary, department name, and salary grade based on these conditions: salary >= 3000 → HIGH, salary >= 2000 → MEDIUM, otherwise LOW.
+22. WAQTD employee name, job, salary, and bonus amount based on these conditions: PRESIDENT receives 20% of salary, MANAGER receives 15%, ANALYST receives 10%, and all other employees receive 5%.
+23. WAQTD the second-highest distinct salary in each department, along with the department name.
+24. WAQTD employee name, salary, department name, and department location for employees earning more than the average salary of their respective departments.
+25. WAQTD the third-lowest distinct salary among employees working as CLERK.
+26. WAQTD employee name, employee salary, manager name, manager salary, and department name for employees earning more than the highest salary in department 30.
+27. WAQTD employee name, employee job, department name, and department location for employees whose salary is greater than the average salary of all employees and whose department is not located in NEW YORK.
+28. WAQTD employee name, salary, commission, and total compensation (salary + commission), displaying 0 when commission is NULL.
+29. WAQTD department name, number of employees, and average salary for departments having more than one employee, arranged by average salary in descending order.
+30. WAQTD employee name, salary, department name, manager name, and manager department location for employees earning more than the average salary of their manager's department.

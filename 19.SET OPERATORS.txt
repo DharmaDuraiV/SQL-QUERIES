@@ -101,6 +101,7 @@ o/p:
 
 
 ------------------------------------------------------------------------------------------------------------------
+
 2. UNION ALL
 
 The SQL UNION ALL operator combines the result sets of two or more SELECT statements into a single table.

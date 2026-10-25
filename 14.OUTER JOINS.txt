@@ -1,0 +1,32 @@
+Left outer Join :
+------------------
+
+1. WAQTD employee name, employee job, employee salary, and department name, including all employees whether they belong to a department or not.
+2. WAQTD all department names and their employee names, including departments that do not have any employees.
+3. WAQTD employee name, employee salary, department number, and department location, including all employees without matching department details.
+4. WAQTD all employee details and department details, including employees without departments and departments without employees.
+5. WAQTD employee name, salary, and department location for employees earning more than 1000, including employees who do not belong to any department.
+6. WAQTD all department names and employee names, including departments located in DALLAS and departments that do not have any employees.
+
+Right outer Join :
+------------------
+
+7. WAQTD employee name and department name for all employees and departments, including records that do not have matching records in the other table.
+8. WAQTD employee name, employee job, and department name, including all employees who do not have matching department details.
+9. WAQTD department name, department location, and employee name, including departments that do not have any employees.
+10. WAQTD all employee names and department names, including employees without departments and departments without employees.
+11. WAQTD employee name, salary, department name, and department location for all employees earning more than 2000, along with all departments located in BANGALORE.
+12. WAQTD department name and employee name for departments that do not have any employees.
+13. WAQTD employee name and department name for employees who do not belong to any department, along with departments that do not have any employees.
+14. WAQTD all department names and their employee names, arranging the results by department number and including departments without employees.
+
+Full outer Join :
+------------------
+
+15. WAQTD employee name, employee salary, department name, and department location, including all records from both tables, whether matching or not.
+16. WAQTD employee name and department name for employees working in SALES, along with departments that do not have any employees.
+17. WAQTD all employee names and department names, including employees without departments.
+18. WAQTD all department names and employee names, including departments without employees.
+19. WAQTD employee name, salary, department name, and department location, including employees earning more than 2000 and departments located in BANGALORE, even when no matching record exists in the other table.
+20. WAQTD employee name and department name for records where an employee has no matching department or a department has no matching employee.
+21. WAQTD employee name, employee job, employee salary, department name, and department location, including all employees and all departments, and arrange the results by department number.

@@ -15,3 +15,22 @@ ORDER OF EXECUTION:
 4-HAVING (if used)      [GROUP-BY-GROUP]
 5-SELECT                [GROUP-BY-GROUP]
 6-ORDER BY               [ROW-BY-ROW]
+
+
+ASSESSMENT QUESTIONS
+
+1. WAQTD employee name, salary, and department number, arranged in descending order of salary, ascending order of department number, and ascending order of employee name.
+2. WAQTD employee name and hire date, arranged in descending order of hire date.
+3. WAQTD employee name, job, salary, and department number, arranged in descending order of department number, ascending order of job, and descending order of salary.
+4. WAQTD employee name and salary, arranged in ascending order of salary.
+5. WAQTD employee name, job, and commission, arranged in ascending order of job and descending order of commission.
+6. WAQTD employee name, department number, and hire date, arranged in ascending order of department number, hire date, and employee name.
+7. WAQTD employee name and salary, arranged in descending order of salary.
+8. WAQTD employee name, salary, and hire date, arranged in descending order of salary and ascending order of hire date.
+9. WAQTD employee name, job, and salary, arranged in ascending order of job.
+10. WAQTD employee name, salary, and commission, arranged in descending order of salary and commission.
+11. WAQTD employee name, department number, and salary, arranged in descending order of department number.
+12. WAQTD employee name, job, and hire date, arranged in ascending order of job, descending order of hire date, and ascending order of employee name.
+13. WAQTD employee name and hire date, arranged in ascending order of hire date.
+14. WAQTD employee name, department number, and salary, arranged in ascending order of department number and salary.
+15. WAQTD employee name, job, and salary, arranged in ascending order of job and descending order of salary.
